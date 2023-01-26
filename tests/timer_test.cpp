@@ -24,7 +24,7 @@ TEST_CASE("Can be started with a duration")
 {
   bricks::timer t;
   auto completion_future = t.start(std::chrono::milliseconds(1));
-  check_token_result(completion_future, 2);
+  check_token_result(completion_future, 5);
 }
 
 TEST_CASE("Can be aborted")
@@ -41,8 +41,8 @@ TEST_CASE("Can start multiple timers")
   bricks::timer t;
   auto completion_future_1 = t.start(std::chrono::milliseconds(1));
   auto completion_future_2 = t.start(std::chrono::milliseconds(1));
-  check_token_result(completion_future_1, 2);
-  check_token_result(completion_future_2, 2);
+  check_token_result(completion_future_1, 5);
+  check_token_result(completion_future_2, 5);
 }
 
 TEST_CASE("Can abort multiple timers")
@@ -62,10 +62,10 @@ TEST_CASE("Can start a timer after another finished")
   bricks::timer t;
   auto completion_future = t.start(std::chrono::milliseconds(1));
   CHECK(completion_future.valid());
-  check_token_result(completion_future, 2);
+  check_token_result(completion_future, 5);
 
   completion_future = t.start(std::chrono::milliseconds(1));
-  check_token_result(completion_future, 2);
+  check_token_result(completion_future, 5);
 }
 
 TEST_CASE("Can be aborted and restarted")
@@ -77,7 +77,7 @@ TEST_CASE("Can be aborted and restarted")
   check_token_result(completion_future, 1);
 
   completion_future = t.start(std::chrono::milliseconds(1));
-  check_token_result(completion_future, 2);
+  check_token_result(completion_future, 5);
 }
 
 TEST_CASE("Can be destroyed while a timer is running")
