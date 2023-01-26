@@ -1,0 +1,109 @@
+name: CI
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install conan, meson, ninja and gcovr
+        uses: ./.github/actions/setup
+
+      - name: Setup python
+        uses: actions/setup-python@v4.3.0
+
+      - name: Install cppcheck
+        run: sudo apt install cppcheck
+
+      - name: Generate compilation database
+        run: |
+          conan install -if build .
+          conan build -c -bf build .
+
+      - uses: pre-commit/action@v3.0.0
+
+  build:
+    runs-on: ubuntu-22.04
+    needs: lint
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install conan, meson, ninja and gcovr
+        uses: ./.github/actions/setup
+
+      - name: Build
+        run: |
+          conan install -if build --build missing .
+          conan build -bf build .
+
+  test:
+    runs-on: ubuntu-22.04
+    needs: build
+    env:
+      BUILD_WRAPPER_OUT_DIR: bw-output # Directory where build-wrapper output will be placed
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install conan, meson, ninja and gcovr
+        uses: ./.github/actions/setup
+
+      - id: setup-sonar-scanner
+        name: Setup sonar cloud
+        uses: jwidauer/setup-sonar-scanner@v3
+
+      - name: Build with build-wrapper
+        run: |
+          conan install -if build --build missing -o bricks:build_coverage=True -s build_type=Debug .
+          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} conan build -bf build .
+
+      - name: Run tests and generate coverage
+        run: |
+          cd build
+          ninja test
+          ninja coverage
+
+      - name: Run sonar-scanner
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          sonar-scanner \
+            --define sonar.host.url="${{ steps.setup-sonar-scanner.outputs.sonar-server-url }}" \
+            --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}" \
+            --define sonar.coverageReportPaths=build/meson-logs/sonarqube.xml
+
+      - name: Upload coverage as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: build/meson-logs/
+
+  docs:
+    runs-on: ubuntu-22.04
+    needs: test
+    steps:
+      - uses: actions/checkout@v3
+      - name: Generate documentation
+        uses: mattnotmitt/doxygen-action@1.9.4
+        with:
+          working-directory: docs
+          doxyfile-path: Doxyfile
+      - name: Upload documentation as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: docs
+          path: docs/html
+
+  release-please:
+    runs-on: ubuntu-22.04
+    needs: docs
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: simple
+          package-name: bricks
+          bump-minor-pre-major: true
+          bump-patch-for-minor-pre-major: true
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
