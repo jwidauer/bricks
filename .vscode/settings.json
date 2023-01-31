@@ -1,6 +1,0 @@
-{
-  "sonarlint.pathToCompileCommands": "${workspaceFolder}/build/compile_commands.json",
-  "coverage-gutters.coverageFileNames": [
-    "build/meson-logs/coverage.info"
-  ]
-}
