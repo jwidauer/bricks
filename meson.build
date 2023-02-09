@@ -1,7 +1,11 @@
 project(
     'bricks',
     'cpp',
-    version: '0.1',
+    version: configure_file(
+        input: 'version.txt',
+        output: 'VERSION',
+        copy: true,
+    ),
     default_options: ['warning_level=3', 'cpp_std=c++17'],
 )
 
