@@ -3,7 +3,7 @@
 #include <bricks/result.hpp>
 #include <unordered_map>
 
-TEST_SUITE_BEGIN("result");
+TEST_SUITE_BEGIN("[result]");
 
 using namespace bricks;  // NOLINT
 
@@ -292,7 +292,7 @@ TEST_CASE("from try or else")
   SUBCASE("error function throws")
   {
     auto f = []() {
-      const auto res = result<int, float>::from_try_or_else(
+      [[maybe_unused]] const auto res = result<int, float>::from_try_or_else(
           []() -> int { throw std::invalid_argument{"value error"}; },
           []() -> err<float> { throw std::invalid_argument{"error error"}; });
     };
