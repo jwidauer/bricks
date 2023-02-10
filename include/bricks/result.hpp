@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cassert>
+#include <functional>
 #include <initializer_list>
 #include <stdexcept>
 #include <type_traits>
@@ -25,25 +26,24 @@ class bad_result_access : public std::runtime_error {
   using std::runtime_error::runtime_error;
 };
 
-/**
- * @brief A class to hold a value.
- *
- * @related result
- */
-template <typename T>
-class ok {
- public:
-  ok() = default;
-  ok(const ok&) = default;
-  auto operator=(const ok&) -> ok& = default;
-  ok(ok&&) noexcept = default;
-  auto operator=(ok&&) noexcept -> ok& = default;
-  ~ok() = default;
+namespace detail {
 
-  explicit ok(T value) noexcept(std::is_nothrow_move_constructible_v<T>) : value_(std::move(value))
+/**
+ * @brief A container for a value.
+ *
+ * Very simple container for a value. It is used to store the value and error of a result.
+ * Used to avoid code duplication.
+ */
+template <typename T, typename tag>
+class value_container {
+ public:
+  using value_type = T;
+
+  explicit value_container(T value) noexcept(std::is_nothrow_move_constructible_v<T>)
+      : value_(std::move(value))
   {
   }
-  auto operator=(T value) noexcept(std::is_nothrow_move_assignable_v<T>) -> ok&
+  auto operator=(T value) noexcept(std::is_nothrow_move_assignable_v<T>) -> value_container&
   {
     value_ = std::move(value);
     return *this;
@@ -52,11 +52,11 @@ class ok {
   [[nodiscard]] constexpr auto get() noexcept -> T& { return value_; }
   [[nodiscard]] constexpr auto get() const noexcept -> const T& { return value_; }
 
-  [[nodiscard]] constexpr auto operator==(const ok& other) const noexcept -> bool
+  [[nodiscard]] constexpr auto operator==(const value_container& other) const noexcept -> bool
   {
     return value_ == other.value_;
   }
-  [[nodiscard]] constexpr auto operator!=(const ok& other) const noexcept -> bool
+  [[nodiscard]] constexpr auto operator!=(const value_container& other) const noexcept -> bool
   {
     return !(*this == other);
   }
@@ -65,45 +65,16 @@ class ok {
   T value_;
 };
 
-/**
- * @brief A class to hold an error value.
- *
- * @related result
- */
+struct ok_tag {};
+struct err_tag {};
+
+}  // namespace detail
+
+template <typename T>
+using ok = detail::value_container<T, detail::ok_tag>;
+
 template <typename E>
-class err {
- public:
-  err() = default;
-  err(const err&) = default;
-  auto operator=(const err&) -> err& = default;
-  err(err&&) noexcept = default;
-  auto operator=(err&&) noexcept -> err& = default;
-  ~err() = default;
-
-  explicit err(E error) noexcept(std::is_nothrow_move_constructible_v<E>) : error_(std::move(error))
-  {
-  }
-  auto operator=(E error) noexcept(std::is_nothrow_move_assignable_v<E>) -> err&
-  {
-    error_ = std::move(error);
-    return *this;
-  }
-
-  [[nodiscard]] constexpr auto get() noexcept -> E& { return error_; }
-  [[nodiscard]] constexpr auto get() const noexcept -> const E& { return error_; }
-
-  [[nodiscard]] constexpr auto operator==(const err& other) const noexcept -> bool
-  {
-    return error_ == other.error_;
-  }
-  [[nodiscard]] constexpr auto operator!=(const err& other) const noexcept -> bool
-  {
-    return !(*this == other);
-  }
-
- private:
-  E error_;
-};
+using err = detail::value_container<E, detail::err_tag>;
 
 /**
  * @brief A class to represent the result of an operation.
@@ -171,6 +142,90 @@ class result {
   constexpr result(error_type in) noexcept(std::is_nothrow_move_constructible_v<err<E>>)  // NOLINT
       : value_(err<E>{std::move(in)})
   {
+  }
+
+  /**
+   * @brief Construct a new result object from an operation that might throw.
+   *
+   * Returns the result of calling function `f` or the provided error value if the operation throws.
+   * This function is useful to convert functions that might throw to functions that return a
+   * result.
+   *
+   * Example:
+   * @snippet result_test.cpp result-from-try-or-example
+   *
+   * @param f The operation to try.
+   * @param error_value The error value to return if the operation throws.
+   * @return result<T, E> The result of the operation.
+   */
+  template <typename F>
+  [[nodiscard]] static auto from_try_or(F&& f, error_type error_value) noexcept(
+      std::is_nothrow_constructible_v<err<E>, error_type>) -> result
+  {
+    static_assert(std::is_invocable_v<F>, "f must be invocable");
+    static_assert(std::is_constructible_v<T, std::invoke_result_t<F>>,
+                  "value_type must be constructible from the result of f");
+
+    try {
+      return ok<T>{std::invoke(std::forward<F>(f))};
+    } catch (...) {
+      return err<E>{error_value};
+    }
+  }
+
+  /**
+   * @brief Construct a new result object from an operation that might throw.
+   *
+   * Returns the result of calling function `f` or a default constructed error value if `f` throws.
+   * This function is useful to convert functions that might throw to functions that return a
+   * result.
+   *
+   * Example:
+   * @snippet result_test.cpp result-from-try-or-default-example
+   *
+   * @param f The operation to try.
+   * @return result<T, E> The result of the operation.
+   */
+  template <typename F>
+  [[nodiscard]] static auto from_try_or_default(F&& f) noexcept(
+      std::is_nothrow_invocable_v<decltype(result<T, E>::from_try_or<F>)>&&
+          std::is_nothrow_constructible_v<error_type>) -> result
+  {
+    static_assert(std::is_default_constructible_v<error_type>,
+                  "error_type must be default constructible");
+
+    return from_try_or(std::forward<F>(f), error_type{});
+  }
+
+  /**
+   * @brief Construct a new result from an operation that might throw or the result of a function.
+   *
+   * Returns the result of calling `f` if it doesn't throw. If the `f` throws, returns
+   * the result of the provided `on_error` function.
+   *
+   * Example:
+   * @snippet result_test.cpp result-from-try-or-else-example
+   *
+   *
+   * @param f The operation to try.
+   * @param on_error The function to call if `f` throws.
+   * @return result The result of the operation.
+   */
+  template <typename F, typename OnError>
+  [[nodiscard]] static auto from_try_or_else(F&& f, OnError&& on_error) noexcept(
+      std::is_nothrow_invocable_v<OnError>&&
+          std::is_nothrow_constructible_v<result<T, E>, std::invoke_result_t<OnError>>) -> result
+  {
+    static_assert(std::is_invocable_v<F>, "f must be invocable");
+    static_assert(std::is_constructible_v<ok<T>, std::invoke_result_t<F>>,
+                  "value_type must be constructible from the result of F");
+    static_assert(std::is_invocable_v<OnError>, "on_error must be invocable");
+
+    try {
+      return ok<T>{std::invoke(std::forward<F>(f))};
+    } catch (...) {
+      return {std::invoke(std::forward<OnError>(on_error))};
+    }
   }
 
   /**
@@ -380,7 +435,7 @@ class result {
     if (is_error()) {
       return {std::get<err<E>>(value_).get()};
     }
-    return {ok{f(std::get<ok<T>>(value_).get())}};
+    return {ok<std::invoke_result_t<F, value_type>>{f(std::get<ok<T>>(value_).get())}};
   }
 
   /**
@@ -402,7 +457,7 @@ class result {
     if (is_value()) {
       return {std::get<ok<T>>(value_).get()};
     }
-    return {err{f(std::get<err<E>>(value_).get())}};
+    return {err<std::invoke_result_t<F, error_type>>{f(std::get<err<E>>(value_).get())}};
   }
 
   /**
@@ -548,6 +603,34 @@ class result {
   variant_t value_;
 };
 
+/**
+ * @brief Construct a new result object from an operation that might throw.
+ *
+ * This function is syntactic sugar for wrapping a function that might throw in a `try` block and
+ * returning a `result` with the return value or the exception.
+ * If the function throws, the exception is wrapped in an `std::exception_ptr` and returned as an
+ * error.
+ *
+ * If it is desired to construct the error from some other value, use `result::from_try_or` or
+ * `result::from_try_or_default` instead.
+ *
+ * Example:
+ * @snippet result_test.cpp result-from-try-example
+ *
+ * @param f The function to wrap.
+ * @return result<std::invoke_result_t<F>, std::exception_ptr> The result of the function.
+ */
+template <typename F, typename std::enable_if_t<std::is_invocable_v<F>, bool> = true>
+[[nodiscard]] static auto result_from_try(F&& f) noexcept
+    -> result<std::invoke_result_t<F>, std::exception_ptr>
+{
+  try {
+    return ok<std::invoke_result_t<F>>{std::invoke(std::forward<F>(f))};
+  } catch (...) {
+    return err<std::exception_ptr>{std::current_exception()};
+  }
+}
+
 }  // namespace bricks
 
 /**
@@ -567,25 +650,14 @@ struct std::hash<bricks::result<T, E>> {
 };
 
 /**
- * @brief Template specialization of `std::hash` for `ok<T>`.
+ * @brief Template specialization of `std::hash` for `ok<T>` and `err<E>`.
  * @relates ok
  */
-template <typename T>
-struct std::hash<bricks::ok<T>> {
-  [[nodiscard]] constexpr auto operator()(const bricks::ok<T>& r) const noexcept -> std::size_t
+template <typename T, typename tag>
+struct std::hash<bricks::detail::value_container<T, tag>> {
+  [[nodiscard]] constexpr auto operator()(
+      const bricks::detail::value_container<T, tag>& r) const noexcept -> std::size_t
   {
     return hash<T>{}(r.get());
-  }
-};
-
-/**
- * @brief Template specialization of `std::hash` for `err<E>`.
- * @relates err
- */
-template <typename E>
-struct std::hash<bricks::err<E>> {
-  [[nodiscard]] constexpr auto operator()(const bricks::err<E>& r) const noexcept -> std::size_t
-  {
-    return hash<E>{}(r.get());
   }
 };

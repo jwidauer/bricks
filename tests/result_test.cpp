@@ -3,116 +3,83 @@
 #include <bricks/result.hpp>
 #include <unordered_map>
 
-TEST_SUITE_BEGIN("result");
+TEST_SUITE_BEGIN("[result]");
 
 using namespace bricks;  // NOLINT
 
-TEST_CASE("ok type")
+struct value {
+  int i;
+
+  auto operator==(int rhs) const -> bool { return i == rhs; }
+  auto operator!=(int rhs) const -> bool { return i != rhs; }
+
+  auto operator==(const value& rhs) const -> bool { return i == rhs.i; }
+  auto operator!=(const value& rhs) const -> bool { return i != rhs.i; }
+};
+
+template <>
+struct std::hash<value> {
+  [[nodiscard]] auto operator()(const value& v) const noexcept -> std::size_t
+  {
+    return std::hash<int>{}(v.i);
+  }
+};
+
+TEST_CASE_TEMPLATE("value container", T, detail::value_container<int, detail::ok_tag>,
+                   detail::value_container<value, detail::ok_tag>)
 {
   SUBCASE("constructors")
   {
-    ok<int> ok1{42};
-    CHECK_EQ(ok1.get(), 42);
+    T c1{typename T::value_type{42}};
+    CHECK_EQ(c1.get(), 42);
 
-    ok<int> ok2{ok1};
-    CHECK_EQ(ok2.get(), 42);
+    T c2{c1};
+    CHECK_EQ(c2.get(), 42);
 
-    ok<int> ok3{std::move(ok1)};  // NOLINT
-    CHECK_EQ(ok3.get(), 42);
+    T c3{std::move(c1)};  // NOLINT
+    CHECK_EQ(c3.get(), 42);
   }
 
   SUBCASE("assignment")
   {
-    ok<int> ok1;
-    ok1 = 42;
-    CHECK_EQ(ok1.get(), 42);
+    T c1{typename T::value_type{1}};
+    c1 = typename T::value_type{42};
+    CHECK_EQ(c1.get(), 42);
 
-    ok<int> ok2;
-    ok2 = ok1;
-    CHECK_EQ(ok2.get(), 42);
+    const T val{typename T::value_type{42}};
+    T c2{typename T::value_type{1}};
+    c2 = val;
+    CHECK_EQ(c2.get(), 42);
 
-    ok<int> ok3;
-    ok3 = std::move(ok1);  // NOLINT
-    CHECK_EQ(ok3.get(), 42);
+    T c3{typename T::value_type{1}};
+    c3 = std::move(c1);  // NOLINT
+    CHECK_EQ(c3.get(), 42);
   }
 
   SUBCASE("get")
   {
-    ok<int> ok1{42};
-    CHECK_EQ(ok1.get(), 42);
+    T c1{typename T::value_type{42}};
+    CHECK_EQ(c1.get(), 42);
   }
 
   SUBCASE("operator ==")
   {
-    ok<int> ok1{42};
-    CHECK(ok1 == ok<int>{42});
+    T c1{typename T::value_type{42}};
+    CHECK(c1 == T{typename T::value_type{42}});
   }
 
   SUBCASE("operator !=")
   {
-    ok<int> ok1{42};
-    CHECK(ok1 != ok<int>{43});
+    T c1{typename T::value_type{42}};
+    CHECK(c1 != T{typename T::value_type{43}});
   }
-}
 
-TEST_CASE("err type")
-{
-  SUBCASE("constructor")
+  SUBCASE("hash")
   {
-    err<int> err1{42};
-    CHECK_EQ(err1.get(), 42);
-
-    err<int> err2{err1};
-    CHECK_EQ(err2.get(), 42);
-
-    err<int> err3{std::move(err1)};  // NOLINT
-    CHECK_EQ(err3.get(), 42);
+    std::unordered_map<T, int> map;
+    map[T{typename T::value_type{42}}] = 43;
+    CHECK_EQ(map[T{typename T::value_type{42}}], 43);
   }
-
-  SUBCASE("assignment")
-  {
-    err<int> err1;
-    err1 = 42;
-    CHECK_EQ(err1.get(), 42);
-
-    err<int> err2;
-    err2 = err1;
-    CHECK_EQ(err2.get(), 42);
-
-    err<int> err3;
-    err3 = std::move(err1);  // NOLINT
-    CHECK_EQ(err3.get(), 42);
-  }
-
-  SUBCASE("get")
-  {
-    err<int> err1{42};
-    CHECK_EQ(err1.get(), 42);
-  }
-
-  SUBCASE("operator ==")
-  {
-    err<int> err1{42};
-    CHECK(err1 == err<int>{42});
-  }
-
-  SUBCASE("operator !=")
-  {
-    err<int> err1{42};
-    CHECK(err1 != err<int>{43});
-  }
-}
-
-TEST_CASE("non default constructible")
-{
-  struct non_default_constructible {
-    non_default_constructible() = delete;
-    explicit non_default_constructible(int /* unused */) {}
-  };
-
-  result<non_default_constructible, int> res{42};
-  CHECK_FALSE(res.is_value());
-  CHECK(res.is_error());
 }
 
 TEST_CASE("Example")
@@ -190,6 +157,215 @@ TEST_CASE("Construction")
     bricks::result<int, int> res4{err<int>{0}};
     // bricks::result<int, int> res5{42}; // error
     /// [result-ctor-example]
+  }
+}
+
+TEST_CASE("non default constructible")
+{
+  struct non_default_constructible {
+    non_default_constructible() = delete;
+    explicit non_default_constructible(int /* unused */) {}
+  };
+
+  SUBCASE("value")
+  {
+    result<non_default_constructible, int> res{non_default_constructible{42}};
+    CHECK(res.is_value());
+    CHECK_FALSE(res.is_error());
+  }
+
+  SUBCASE("error")
+  {
+    result<non_default_constructible, int> res{42};
+    CHECK_FALSE(res.is_value());
+    CHECK(res.is_error());
+  }
+}
+
+TEST_CASE("from try or")
+{
+  SUBCASE("value")
+  {
+    const auto res = result<int, float>::from_try_or([]() { return 42; }, 0.);
+    CHECK(res.is_value());
+    CHECK_FALSE(res.is_error());
+    CHECK_EQ(res.unwrap(), 42);
+  }
+
+  SUBCASE("error")
+  {
+    const auto res =
+        result<int, float>::from_try_or([]() -> int { throw std::invalid_argument{"error"}; }, 0.);
+    CHECK_FALSE(res.is_value());
+    CHECK(res.is_error());
+    CHECK_EQ(res.unwrap_error(), 0.);
+  }
+
+  SUBCASE("example")
+  {
+    /// [result-from-try-or-example]
+    // You can use the `from_try_or` function to convert a function that can throw to a function
+    // that returns a result
+    auto divide = [](int a, int b) {
+      if (b == 0) {
+        throw std::invalid_argument{"division by zero"};
+      }
+      return a / b;
+    };
+
+    enum class error { division_by_zero, non_zero_remainder };
+
+    const auto res = result<int, error>::from_try_or([divide]() { return divide(42, 2); },
+                                                     error::division_by_zero);
+
+    if (res.is_value()) {
+      INFO("The result is ", res.unwrap());
+    } else {
+      INFO("The error is: ", res.unwrap_error());
+    }
+    /// [result-from-try-or-example]
+  }
+}
+
+TEST_CASE("from try or default")
+{
+  SUBCASE("value")
+  {
+    const auto res = result<int, float>::from_try_or_default([]() { return 42; });
+    CHECK(res.is_value());
+    CHECK_FALSE(res.is_error());
+    CHECK_EQ(res.unwrap(), 42);
+  }
+
+  SUBCASE("error")
+  {
+    const auto res = result<int, float>::from_try_or_default(
+        []() -> int { throw std::invalid_argument{"error"}; });
+    CHECK_FALSE(res.is_value());
+    CHECK(res.is_error());
+    CHECK_EQ(res.unwrap_error(), 0.);
+  }
+
+  SUBCASE("example")
+  {
+    /// [result-from-try-or-default-example]
+    // You can use the `from_try_or_default` function to convert a function that can throw to a
+    // function that returns a result
+    auto divide = [](int a, int b) {
+      if (b == 0) {
+        throw std::invalid_argument{"division by zero"};
+      }
+      return a / b;
+    };
+
+    const auto res = result<int, float>::from_try_or_default([divide]() { return divide(42, 2); });
+
+    if (res.is_value()) {
+      INFO("The result is ", res.unwrap());
+    } else {
+      INFO("The error is: ", res.unwrap_error());  // 0
+    }
+    /// [result-from-try-or-default-example]
+  }
+}
+
+TEST_CASE("from try or else")
+{
+  SUBCASE("value")
+  {
+    const auto res = result<int, float>::from_try_or_else([]() noexcept { return 42; },
+                                                          []() noexcept { return err<float>{1.}; });
+    CHECK(res.is_value());
+    CHECK_FALSE(res.is_error());
+    CHECK_EQ(res.unwrap(), 42);
+  }
+
+  SUBCASE("error")
+  {
+    const auto res = result<int, float>::from_try_or_else(
+        []() -> int { throw std::invalid_argument{"error"}; }, []() { return err<float>{1.}; });
+    CHECK_FALSE(res.is_value());
+    CHECK(res.is_error());
+    CHECK_EQ(res.unwrap_error(), 1.);
+  }
+
+  SUBCASE("error function throws")
+  {
+    auto f = []() {
+      [[maybe_unused]] const auto res = result<int, float>::from_try_or_else(
+          []() -> int { throw std::invalid_argument{"value error"}; },
+          []() -> err<float> { throw std::invalid_argument{"error error"}; });
+    };
+    CHECK_THROWS_WITH_AS(f(), "error error", std::invalid_argument);
+  }
+
+  SUBCASE("example")
+  {
+    /// [result-from-try-or-else-example]
+    // You can use the `from_try_or_else` function to convert a function that can throw to a
+    // function that returns a result
+    auto divide = [](int a, int b) {
+      if (b == 0) {
+        throw std::invalid_argument{"division by zero"};
+      }
+      return a / b;
+    };
+
+    enum class error { division };
+
+    const auto res = result<int, error>::from_try_or_else(
+        [divide]() { return divide(42, 2); }, []() noexcept { return error::division; });
+
+    if (res.is_value()) {
+      INFO("The result is ", res.unwrap());
+    } else {
+      INFO("The error is: ", res.unwrap_error());
+    }
+    /// [result-from-try-or-else-example]
+  }
+}
+
+TEST_CASE("result from try")
+{
+  SUBCASE("value")
+  {
+    const auto res = result_from_try([]() { return 42; });
+    CHECK(res.is_value());
+    CHECK_FALSE(res.is_error());
+    CHECK_EQ(res.unwrap(), 42);
+  }
+
+  SUBCASE("error")
+  {
+    const auto res = result_from_try([]() -> int { throw std::invalid_argument{"error"}; });
+    CHECK_FALSE(res.is_value());
+    CHECK(res.is_error());
+    CHECK_THROWS_AS_MESSAGE(std::rethrow_exception(res.unwrap_error()), std::invalid_argument,
+                            "error");
+  }
+
+  SUBCASE("example")
+  {
+    /// [result-from-try-example]
+    // You can use the `result_from_try` function to convert a function that can throw an
+    // exception into a function that returns a `bricks::result`
+    auto divide = [](int a, int b) {
+      if (b == 0) {
+        throw std::invalid_argument{"division by zero"};
+      }
+      if (a % b != 0) {
+        throw std::invalid_argument{"non zero remainder"};
+      }
+      return a / b;
+    };
+
+    const auto res = result_from_try([&divide]() { return divide(42, 2); });
+    if (res.is_value()) {
+      INFO("The result is ", res.unwrap());
+    } else {
+      CHECK_THROWS_AS(std::rethrow_exception(res.unwrap_error()), std::invalid_argument);
+    }
+    /// [result-from-try-example]
   }
 }
 
