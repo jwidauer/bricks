@@ -6,6 +6,18 @@
 
 TEST_SUITE_BEGIN("[zip]");
 
+TEST_CASE("example")
+{
+  /// [zip-example]
+  std::vector<int> a{1, 2, 3};
+  std::vector<int> b{4, 5, 6};
+  for (auto [x, y] : bricks::zip(a, b)) {
+    auto sum = x + y;
+    INFO(sum);  // prints 5, 7, 9
+  }
+  /// [zip-example]
+}
+
 TEST_CASE("same size vectors")
 {
   std::vector<int> v1 = {1, 2, 3};

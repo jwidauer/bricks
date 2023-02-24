@@ -12,6 +12,15 @@ TEST_SUITE_BEGIN("[algorithm]");
 
 TEST_CASE("contains")
 {
+  SUBCASE("example")
+  {
+    /// [contains-example]
+    std::vector<int> vec = {1, 2, 3, 4, 5};
+    INFO(bricks::contains(vec, 3));  // prints true
+    INFO(bricks::contains(vec, 6));  // prints false
+    /// [contains-example]
+  }
+
   SUBCASE("vector")
   {
     std::vector<int> v = {1, 2, 3};
@@ -73,17 +82,28 @@ TEST_CASE("contains")
 
 TEST_CASE("contains_if")
 {
-  std::vector<int> v = {1, 2, 3};
-  CHECK(bricks::contains_if(v, [](int i) { return i == 1; }));
-  CHECK(bricks::contains_if(v, [](int i) { return i == 2; }));
-  CHECK(bricks::contains_if(v, [](int i) { return i == 3; }));
-  CHECK_FALSE(bricks::contains_if(v, [](int i) { return i == 4; }));
-  CHECK_THROWS_AS(bricks::contains_if(v,
-                                      [](int) {
-                                        throw std::logic_error("Test error");
-                                        return false;
-                                      }),
-                  std::logic_error);
+  SUBCASE("test")
+  {
+    std::vector<int> v = {1, 2, 3};
+    CHECK(bricks::contains_if(v, [](int i) { return i == 1; }));
+    CHECK(bricks::contains_if(v, [](int i) { return i == 2; }));
+    CHECK(bricks::contains_if(v, [](int i) { return i == 3; }));
+    CHECK_FALSE(bricks::contains_if(v, [](int i) { return i == 4; }));
+    CHECK_THROWS_AS(bricks::contains_if(v,
+                                        [](int) {
+                                          throw std::logic_error("Test error");
+                                          return false;
+                                        }),
+                    std::logic_error);
+  }
+
+  SUBCASE("example")
+  {
+    /// [contains_if-example]
+    std::vector<int> vec = {1, 2, 3, 4, 5};
+    INFO(bricks::contains_if(vec, [](int i) { return i % 2 == 0; }));  // prints true
+    /// [contains_if-example]
+  }
 }
 
 TEST_SUITE_END();

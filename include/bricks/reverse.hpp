@@ -12,12 +12,7 @@ namespace bricks {
  * a range-based for loop.
  *
  * Example:
- * ```
- * std::vector<int> v{1, 2, 3, 4, 5};
- * for (auto e : bricks::reverse(v)) {
- *  std::cout << e << std::endl; // prints 5, 4, 3, 2, 1
- * }
- * ```
+ * @snippet reverse_test.cpp reverse-example
  *
  * @tparam Range The type of range to reverse.
  * @param range The range to reverse.

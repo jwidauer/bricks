@@ -14,12 +14,7 @@ namespace bricks {
  * Each element in the enumerator is a pair of the index and the value.
  *
  * Example:
- * ```cpp
- * std::vector<int> v{1, 2, 3, 4, 5};
- * for (auto [i, e] : bricks::enumerate(v)) {
- *   std::cout << i << ": " << e << std::endl; // prints 0: 1, 1: 2, 2: 3, 3: 4, 4: 5
- * }
- * ```
+ * @snippet enumerate_test.cpp enumerate-example
  *
  * @tparam Range The type of range to enumerate.
  * @param range The range to enumerate.

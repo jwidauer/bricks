@@ -15,13 +15,7 @@ namespace bricks {
  * @brief Get the keys of an associative container.
  *
  * Example:
- * ```cpp
- * std::map<std::string, int> map = {{"a", 1}, {"b", 2}, {"c", 3}};
- * auto keys = bricks::keys(map);
- * for (auto key : keys) {
- *   std::cout << key << std::endl; // prints "a", "b", "c"
- * }
- * ```
+ * @snippet algorithm_test.cpp keys-example
  *
  * @tparam Container The type of the container.
  * @param input_map The container.
@@ -42,13 +36,7 @@ auto keys(const Container& input_map) -> std::vector<typename Container::key_typ
  * @brief Get the values of an associative container.
  *
  * Example:
- * ```cpp
- * std::map<std::string, int> map = {{"a", 1}, {"b", 2}, {"c", 3}};
- * auto values = bricks::values(map);
- * for (auto value : values) {
- *   std::cout << value << std::endl; // prints 1, 2, 3
- * }
- * ```
+ * @snippet algorithm_test.cpp values-example
  *
  * @tparam Container The type of the container.
  * @param input_map The container.
@@ -71,11 +59,7 @@ auto values(const Container& input_map) -> std::vector<typename Container::mappe
  * C++17 implementation of the C++20 `std::bind_front(...)` function.
  *
  * Example:
- * ```cpp
- * auto add = [](int a, int b) { return a + b; };
- * auto add_1 = bricks::bind_front(add, 1);
- * std::cout << add_1(2) << std::endl; // prints 3
- * ```
+ * @snippet algorithm_test.cpp bind_front-example
  *
  * @param f The function to bind front arguments to.
  * @param front_args The front arguments to bind.
@@ -95,13 +79,7 @@ constexpr auto bind_front(F&& f, FrontArgs&&... front_args)
  * Creates a new container of type `Container`, with the elements that satisfy the predicate.
  *
  * Example:
- * ```cpp
- * std::vector<int> vec = {1, 2, 3, 4, 5};
- * auto filtered = bricks::filter(vec, [](int i) { return i % 2 == 0; });
- * for (auto i : filtered) {
- *   std::cout << i << std::endl; // prints 2, 4
- * }
- * ```
+ * @snippet algorithm_test.cpp filter-example
  *
  * @tparam Container The type of the container.
  * @tparam UnaryPredicate The type of the predicate.
@@ -127,11 +105,7 @@ auto filter(const Container& container, const UnaryPredicate& predicate) -> Cont
  * will be called.
  *
  * Example:
- * ```cpp
- * std::vector<int> vec = {1, 2, 3, 4, 5};
- * std::cout << std::boolalpha << bricks::contains(vec, 3) << std::endl; // prints true
- * std::cout << std::boolalpha << bricks::contains(vec, 6) << std::endl; // prints false
- * ```
+ * @snippet contains_test.cpp contains-example
  *
  * @tparam Container The type of the container.
  * @tparam Value The type of the value.
@@ -149,11 +123,7 @@ constexpr auto contains(const Container& container, const Value& value) noexcept
  * @brief Checks if a container contains a value that satisfies a predicate.
  *
  * Example:
- * ```cpp
- * std::vector<int> vec = {1, 2, 3, 4, 5};
- * std::cout << std::boolalpha << bricks::contains_if(vec, [](int i) { return i % 2 == 0; }) <<
- * std::endl; // prints true
- * ```
+ * @snippet contains_test.cpp contains_if-example
  *
  * @tparam Container The type of the container.
  * @tparam UnaryPredicate The type of the predicate.
@@ -176,10 +146,7 @@ constexpr auto contains_if(const Container& container, const UnaryPredicate& pre
  * `key_type` type alias. If `std::find` throws an exception, `std::terminate` will be called.
  *
  * Example:
- * ```cpp
- * std::vector<int> vec = {1, 2, 3, 4, 5};
- * std::cout << bricks::index_of(vec, 3) << std::endl; // prints 2
- * ```
+ * @snippet index_of_test.cpp index_of-example
  *
  * @tparam Container The type of the container.
  * @tparam Value The type of value to search for.
@@ -198,10 +165,7 @@ constexpr auto index_of(const Container& container, const Value& value) noexcept
  * @brief Get the index of the first element in a container for which a predicate is true.
  *
  * Example:
- * ```cpp
- * std::vector<int> vec = {1, 2, 3, 4, 5};
- * std::cout << bricks::index_of_if(vec, [](int i) { return i % 2 == 0; }) << std::endl; // prints 1
- * ```
+ * @snippet index_of_test.cpp index_of_if-example
  *
  * @tparam Container The type of the container.
  * @tparam UnaryPredicate The type of the predicate.
@@ -222,17 +186,7 @@ constexpr auto index_of_if(const Container& container, const UnaryPredicate& pre
  * @brief Check whether a future is ready after a timeout.
  *
  * Example:
- * @code {.cpp}
- * auto future = std::async(std::launch::async, []() {
- *   std::this_thread::sleep_for(std::chrono::seconds(1));
- *   return 42;
- * });
- * // Will print "Future is ready!" after 2 seconds.
- * if (bricks::is_ready(future, std::chrono::seconds(2))) {
- *   std::cout << "Future is ready!" << std::endl;
- * }
- * @endcode
- *
+ * @snippet algorithm_test.cpp is_ready_after-example
  *
  * @tparam T The type of the future.
  * @param future The future.
@@ -250,16 +204,7 @@ auto is_ready_after(const std::future<T>& future,
  * @brief Check whether a future is ready at a specific time.
  *
  * Example:
- * @code {.cpp}
- * auto future = std::async(std::launch::async, []() {
- *   std::this_thread::sleep_for(std::chrono::seconds(1));
- *   return 42;
- * });
- * // Will print "Future is ready!" after 2 seconds.
- * if (bricks::is_ready_at(future, std::chrono::steady_clock::now() + std::chrono::seconds(2))) {
- *   std::cout << "Future is ready!" << std::endl;
- * }
- * @endcode
+ * @snippet algorithm_test.cpp is_ready_at-example
  *
  * @tparam T The type of the future.
  * @param future The future.

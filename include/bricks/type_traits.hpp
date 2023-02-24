@@ -51,22 +51,7 @@ struct has_find : detail::has_find<T, U>::type {
  * @brief Helper variable template to check if a type has a `find` method taking a specific type.
  *
  * Example:
- * @code
- * struct Foo {
- *   int find(int) const;
- * };
- *
- * struct Bar {
- *   int find(int);
- * };
- *
- * struct Baz {
- * };
- *
- * static_assert(has_find_v<Foo, int>);
- * static_assert(has_find_v<Bar, int>);
- * static_assert(!has_find_v<Baz, int>);
- * @endcode
+ * @snippet type_traits_test.cpp has_find-example
  */
 template <class T, typename U>
 inline constexpr bool has_find_v = has_find<T, U>::value;
@@ -86,12 +71,8 @@ struct is_iterator : detail::is_iterator<T>::type {
 /**
  * @brief Helper variable template to check if a type is an iterator.
  *
- * @code {.cpp}
- * static_assert(!is_iterator_v<int>);
- * static_assert(is_iterator_v<std::vector<int>::iterator>);
- * static_assert(is_iterator_v<std::vector<int>::const_iterator>);
- * @endcode
- *
+ * Example:
+ * @snippet type_traits_test.cpp is_iterator-example
  *
  * @tparam T
  */
