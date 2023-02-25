@@ -14,6 +14,13 @@ TEST_SUITE_BEGIN("[algorithm]");
 
 TEST_CASE("index_of")
 {
+  SUBCASE("example")
+  {
+    /// [index_of-example]
+    std::vector<int> vec = {1, 2, 3, 4, 5};
+    INFO(bricks::index_of(vec, 3));  // prints 2
+    /// [index_of-example]
+  }
   SUBCASE("vector")
   {
     std::vector<int> v = {1, 2, 3};
@@ -64,17 +71,28 @@ TEST_CASE("index_of")
 
 TEST_CASE("index_of_if")
 {
-  std::vector<int> v = {1, 2, 3};
-  CHECK(bricks::index_of_if(v, [](int i) { return i == 1; }) == 0);
-  CHECK(bricks::index_of_if(v, [](int i) { return i == 2; }) == 1);
-  CHECK(bricks::index_of_if(v, [](int i) { return i == 3; }) == 2);
-  CHECK(bricks::index_of_if(v, [](int i) { return i == 4; }) == std::nullopt);
-  CHECK_THROWS_AS(bricks::index_of_if(v,
-                                      [](int i) {
-                                        throw std::logic_error("test exception");
-                                        return i == 1;
-                                      }),
-                  std::logic_error);
+  SUBCASE("example")
+  {
+    /// [index_of_if-example]
+    std::vector<int> vec = {1, 2, 3, 4, 5};
+    INFO(bricks::index_of_if(vec, [](int i) { return i % 2 == 0; }));  // prints 1
+    /// [index_of_if-example]
+  }
+
+  SUBCASE("test")
+  {
+    std::vector<int> v = {1, 2, 3};
+    CHECK(bricks::index_of_if(v, [](int i) { return i == 1; }) == 0);
+    CHECK(bricks::index_of_if(v, [](int i) { return i == 2; }) == 1);
+    CHECK(bricks::index_of_if(v, [](int i) { return i == 3; }) == 2);
+    CHECK(bricks::index_of_if(v, [](int i) { return i == 4; }) == std::nullopt);
+    CHECK_THROWS_AS(bricks::index_of_if(v,
+                                        [](int i) {
+                                          throw std::logic_error("test exception");
+                                          return i == 1;
+                                        }),
+                    std::logic_error);
+  }
 }
 
 TEST_SUITE_END();

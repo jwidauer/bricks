@@ -2,16 +2,17 @@ doctest_dep = dependency('doctest')
 threads_dep = dependency('threads')
 
 sources = [
-    'main.cpp',
     'algorithm_test.cpp',
     'charconv_test.cpp',
     'concurrent_test.cpp',
     'contains_test.cpp',
     'enumerate_test.cpp',
     'index_of_test.cpp',
+    'main.cpp',
     'result_test.cpp',
     'reverse_test.cpp',
     'timer_test.cpp',
+    'type_traits_test.cpp',
     'zip_test.cpp',
 ]
 

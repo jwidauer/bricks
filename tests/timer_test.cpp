@@ -15,6 +15,28 @@ void check_token_result(bricks::timer::completion_token& token, uint8_t wait_tim
   REQUIRE(token.wait_for(std::chrono::milliseconds(wait_time_ms)) == std::future_status::ready);
   CHECK_NOTHROW(token.get());
 }
+TEST_CASE("example")
+{
+  /// [timer-example]
+  bricks::timer t;
+  auto completion_token = t.start(std::chrono::milliseconds(5));
+  do {
+    INFO("Waiting for timer to complete");
+  } while (completion_token.wait_for(std::chrono::milliseconds(1)) != std::future_status::ready);
+  /// [timer-example]
+}
+
+TEST_CASE("abort example")
+{
+  /// [timer-abort-example]
+  bricks::timer t;
+  auto completion_token = t.start(std::chrono::milliseconds(100));
+  t.abort();
+  while (completion_token.wait_for(std::chrono::milliseconds(1)) != std::future_status::ready) {
+    FAIL("Timer should have been aborted");  // This will not print
+  }
+  /// [timer-abort-example]
+}
 
 TEST_CASE("Can be default constructed")
 {

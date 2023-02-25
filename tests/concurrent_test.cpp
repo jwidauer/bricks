@@ -1,5 +1,6 @@
 #include <doctest/doctest.h>
 
+#include <algorithm>
 #include <bricks/concurrent.hpp>
 #include <thread>
 #include <vector>
@@ -7,6 +8,36 @@
 #include "test_error.hpp"
 
 TEST_SUITE_BEGIN("[concurrent]");
+
+TEST_CASE("example")
+{
+  /// [concurrent-example]
+  bricks::concurrent<std::vector<int>> vec{3, 2, 1};
+
+  vec.write()->push_back(4);  // Guaranteed to be thread safe write.
+
+  INFO("Vector size: ", vec.read()->size());  // Guaranteed to be thread safe read.
+
+  // Many reader locks can be held at the same time.
+  {
+    auto r1 = vec.read();
+    auto r2 = vec.read();
+
+    const auto safe_read = vec.read();
+    for (const auto& i : *safe_read) {
+      INFO("Vector element: ", i);
+    }
+    INFO("Vector size: ", r1->size());
+    INFO("First element: ", r2->front());
+  }  // Read locks are released here.
+
+  // Only one writer lock can be held at a time.
+  {
+    auto safe_write = vec.write();
+    std::sort(safe_write->begin(), safe_write->end());
+  }  // Write lock is released here.
+  /// [concurrent-example]
+}
 
 TEST_CASE("Underlying constructor works")
 {

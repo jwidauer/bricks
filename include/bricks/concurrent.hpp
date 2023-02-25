@@ -13,30 +13,7 @@ namespace bricks {
  * read-write.
  *
  * Example usage:
- * ```cpp
- * bricks::concurrent<std::vector<int>> vec{3, 2, 1};
- *
- * vec.write()->push_back(4);  // Guaranteed to be thread safe write.
- *
- * auto size = vec.read()->size();  // Guaranteed to be thread safe read.
- *
- * // Many reader locks can be held at the same time.
- * {
- *   auto r1 = vec.read();
- *   auto r2 = vec.read();
- *
- *   const auto safe_read = vec.read();
- *   for (const auto& i : *safe_read) {
- *     std::cout << "Vector element: " << i << std::endl;
- *   }
- * } // Read locks are released here.
- *
- * // Only one writer lock can be held at a time.
- * {
- *   auto safe_write = vec.write();
- *   std::sort(safe_write->begin(), safe_write->end());
- * } // Write lock is released here.
- * ```
+ * @snippet concurrent_test.cpp concurrent-example
  *
  * Very similar to rust's
  * [std::sync::RwLock](https://doc.rust-lang.org/std/sync/struct.RwLock.html).

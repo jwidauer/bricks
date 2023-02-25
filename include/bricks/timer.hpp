@@ -16,13 +16,7 @@ namespace bricks {
  * destroyed.
  *
  * Example:
- * @code {.cpp}
- * bricks::timer t;
- * auto completion_token = t.start(std::chrono::milliseconds(100));
- * do {
- *   std::cout << "Waiting for timer to complete" << std::endl;
- * } while (completion_token.wait_for(std::chrono::milliseconds(1)) != std::future_status::ready);
- * @endcode
+ * @snippet timer_test.cpp timer-example
  */
 class timer {
  public:
@@ -57,14 +51,7 @@ class timer {
    * aborted, the completion token will be ready immediately.
    *
    * Example:
-   * @code {.cpp}
-   * bricks::timer t;
-   * auto completion_token = t.start(std::chrono::milliseconds(100));
-   * do {
-   *  std::cout << "Waiting for timer to complete" << std::endl;
-   * } while (completion_token.wait_for(std::chrono::milliseconds(1)) != std::future_status::ready);
-   * @endcode
-   *
+   * @snippet timer_test.cpp timer-example
    */
   using completion_token = std::future<void>;
 
@@ -73,13 +60,7 @@ class timer {
    * expires.
    *
    * Example:
-   * @code {.cpp}
-   * bricks::timer t;
-   * auto completion_token = t.start(std::chrono::milliseconds(100));
-   * while (completion_token.wait_for(std::chrono::milliseconds(1)) != std::future_status::ready) {
-   *   std::cout << "Waiting for timer to complete" << std::endl;
-   * }
-   * @endcode
+   * @snippet timer_test.cpp timer-example
    *
    * @param duration The duration to wait before completing the token.
    *
@@ -101,14 +82,7 @@ class timer {
    * This function aborts the timer, causing any completion tokens returned by `start` to complete.
    *
    * Example:
-   * @code {.cpp}
-   * bricks::timer t;
-   * auto completion_token = t.start(std::chrono::milliseconds(100));
-   * t.abort();
-   * while (completion_token.wait_for(std::chrono::milliseconds(1)) != std::future_status::ready) {
-   *   std::cout << "Waiting for timer to complete" << std::endl;  // This will not print
-   * }
-   * @endcode
+   * @snippet timer_test.cpp timer-abort-example
    */
   inline auto abort() -> void
   {
