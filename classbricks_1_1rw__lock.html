@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <meta name="generator" content="Doxygen 1.9.5" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BRICKS: bricks::concurrent&lt; Class &gt; Class Template Reference</title>
+    <title>BRICKS: bricks::rw_lock&lt; Class &gt; Class Template Reference</title>
     <link href="tabs.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="dynsections.js"></script>
@@ -87,7 +87,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classbricks_1_1concurrent.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('classbricks_1_1rw__lock.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -116,32 +116,32 @@ $(document).ready(function(){initNavTree('classbricks_1_1concurrent.html',''); i
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="classbricks_1_1concurrent-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">bricks::concurrent&lt; Class &gt; Class Template Reference</div></div>
+<a href="classbricks_1_1rw__lock-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">bricks::rw_lock&lt; Class &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p>A reader-writer lock.  
- <a href="classbricks_1_1concurrent.html#details">More...</a></p>
+ <a href="classbricks_1_1rw__lock.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="concurrent_8hpp_source.html">concurrent.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="rw__lock_8hpp_source.html">rw_lock.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9b199c4d675691fad16ca603ff16322e"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbricks_1_1concurrent.html#a9b199c4d675691fad16ca603ff16322e">read</a> () const noexcept -&gt; read_guard</td></tr>
-<tr class="memdesc:a9b199c4d675691fad16ca603ff16322e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locks the resource for reading, blocking until the lock is acquired.  <a href="classbricks_1_1concurrent.html#a9b199c4d675691fad16ca603ff16322e">More...</a><br /></td></tr>
-<tr class="separator:a9b199c4d675691fad16ca603ff16322e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed1831cd008425857710332d7d74c575"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbricks_1_1concurrent.html#aed1831cd008425857710332d7d74c575">write</a> () noexcept -&gt; write_guard</td></tr>
-<tr class="memdesc:aed1831cd008425857710332d7d74c575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locks the resource for writing, blocking until the lock is acquired.  <a href="classbricks_1_1concurrent.html#aed1831cd008425857710332d7d74c575">More...</a><br /></td></tr>
-<tr class="separator:aed1831cd008425857710332d7d74c575"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83b8e2208de31a88c85d316d6dd39fc4"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbricks_1_1rw__lock.html#a83b8e2208de31a88c85d316d6dd39fc4">read</a> () const noexcept -&gt; read_guard</td></tr>
+<tr class="memdesc:a83b8e2208de31a88c85d316d6dd39fc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locks the resource for reading, blocking until the lock is acquired.  <a href="classbricks_1_1rw__lock.html#a83b8e2208de31a88c85d316d6dd39fc4">More...</a><br /></td></tr>
+<tr class="separator:a83b8e2208de31a88c85d316d6dd39fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf8d296f40345487f707bde1752bd655"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbricks_1_1rw__lock.html#acf8d296f40345487f707bde1752bd655">write</a> () noexcept -&gt; write_guard</td></tr>
+<tr class="memdesc:acf8d296f40345487f707bde1752bd655"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locks the resource for writing, blocking until the lock is acquired.  <a href="classbricks_1_1rw__lock.html#acf8d296f40345487f707bde1752bd655">More...</a><br /></td></tr>
+<tr class="separator:acf8d296f40345487f707bde1752bd655"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class Class&gt;<br />
-class bricks::concurrent&lt; Class &gt;</div><p >A reader-writer lock. </p>
+class bricks::rw_lock&lt; Class &gt;</div><p >A reader-writer lock. </p>
 <p >This class implements a reader-writer lock around a shared resource. The resource can be read by multiple threads at the same time, but only one thread can write to the resource at a time. Read access is read only, write access is read-write.</p>
-<p >Example usage: </p><div class="fragment"><div class="line">  <a class="code hl_class" href="classbricks_1_1concurrent.html">bricks::concurrent&lt;std::vector&lt;int&gt;</a>&gt; vec{3, 2, 1};</div>
+<p >Example usage: </p><div class="fragment"><div class="line">  <a class="code hl_class" href="classbricks_1_1rw__lock.html">bricks::rw_lock&lt;std::vector&lt;int&gt;</a>&gt; vec{3, 2, 1};</div>
 <div class="line"> </div>
-<div class="line">  vec.<a class="code hl_function" href="classbricks_1_1concurrent.html#aed1831cd008425857710332d7d74c575">write</a>()-&gt;push_back(4);  <span class="comment">// Guaranteed to be thread safe write.</span></div>
+<div class="line">  vec.<a class="code hl_function" href="classbricks_1_1rw__lock.html#acf8d296f40345487f707bde1752bd655">write</a>()-&gt;push_back(4);  <span class="comment">// Guaranteed to be thread safe write.</span></div>
 <div class="line"> </div>
 <div class="line">  INFO(<span class="stringliteral">&quot;Vector size: &quot;</span>, vec.read()-&gt;size());  <span class="comment">// Guaranteed to be thread safe read.</span></div>
 <div class="line"> </div>
@@ -163,8 +163,8 @@ class bricks::concurrent&lt; Class &gt;</div><p >A reader-writer lock. </p>
 <div class="line">    <span class="keyword">auto</span> safe_write = vec.write();</div>
 <div class="line">    std::sort(safe_write-&gt;begin(), safe_write-&gt;end());</div>
 <div class="line">  }  <span class="comment">// Write lock is released here.</span></div>
-<div class="ttc" id="aclassbricks_1_1concurrent_html"><div class="ttname"><a href="classbricks_1_1concurrent.html">bricks::concurrent</a></div><div class="ttdoc">A reader-writer lock.</div><div class="ttdef"><b>Definition:</b> concurrent.hpp:25</div></div>
-<div class="ttc" id="aclassbricks_1_1concurrent_html_aed1831cd008425857710332d7d74c575"><div class="ttname"><a href="classbricks_1_1concurrent.html#aed1831cd008425857710332d7d74c575">bricks::concurrent::write</a></div><div class="ttdeci">auto write() noexcept -&gt; write_guard</div><div class="ttdoc">Locks the resource for writing, blocking until the lock is acquired.</div><div class="ttdef"><b>Definition:</b> concurrent.hpp:48</div></div>
+<div class="ttc" id="aclassbricks_1_1rw__lock_html"><div class="ttname"><a href="classbricks_1_1rw__lock.html">bricks::rw_lock</a></div><div class="ttdoc">A reader-writer lock.</div><div class="ttdef"><b>Definition:</b> rw_lock.hpp:25</div></div>
+<div class="ttc" id="aclassbricks_1_1rw__lock_html_acf8d296f40345487f707bde1752bd655"><div class="ttname"><a href="classbricks_1_1rw__lock.html#acf8d296f40345487f707bde1752bd655">bricks::rw_lock::write</a></div><div class="ttdeci">auto write() noexcept -&gt; write_guard</div><div class="ttdoc">Locks the resource for writing, blocking until the lock is acquired.</div><div class="ttdef"><b>Definition:</b> rw_lock.hpp:48</div></div>
 </div><!-- fragment --><p >Very similar to rust's <a href="https://doc.rust-lang.org/std/sync/struct.RwLock.html">std::sync::RwLock</a>.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -173,8 +173,8 @@ class bricks::concurrent&lt; Class &gt;</div><p >A reader-writer lock. </p>
   </dd>
 </dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9b199c4d675691fad16ca603ff16322e" name="a9b199c4d675691fad16ca603ff16322e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b199c4d675691fad16ca603ff16322e">&#9670;&#160;</a></span>read()</h2>
+<a id="a83b8e2208de31a88c85d316d6dd39fc4" name="a83b8e2208de31a88c85d316d6dd39fc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83b8e2208de31a88c85d316d6dd39fc4">&#9670;&#160;</a></span>read()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -185,7 +185,7 @@ template&lt;class Class &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto <a class="el" href="classbricks_1_1concurrent.html">bricks::concurrent</a>&lt; Class &gt;::read </td>
+          <td class="memname">auto <a class="el" href="classbricks_1_1rw__lock.html">bricks::rw_lock</a>&lt; Class &gt;::read </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const -&gt; read_guard </td>
@@ -203,8 +203,8 @@ template&lt;class Class &gt; </div>
 
 </div>
 </div>
-<a id="aed1831cd008425857710332d7d74c575" name="aed1831cd008425857710332d7d74c575"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed1831cd008425857710332d7d74c575">&#9670;&#160;</a></span>write()</h2>
+<a id="acf8d296f40345487f707bde1752bd655" name="acf8d296f40345487f707bde1752bd655"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf8d296f40345487f707bde1752bd655">&#9670;&#160;</a></span>write()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -215,7 +215,7 @@ template&lt;class Class &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto <a class="el" href="classbricks_1_1concurrent.html">bricks::concurrent</a>&lt; Class &gt;::write </td>
+          <td class="memname">auto <a class="el" href="classbricks_1_1rw__lock.html">bricks::rw_lock</a>&lt; Class &gt;::write </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> -&gt; write_guard </td>
@@ -234,14 +234,14 @@ template&lt;class Class &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/github/workspace/include/bricks/<a class="el" href="concurrent_8hpp_source.html">concurrent.hpp</a></li>
+<li>/github/workspace/include/bricks/<a class="el" href="rw__lock_8hpp_source.html">rw_lock.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespacebricks.html">bricks</a></li><li class="navelem"><a class="el" href="classbricks_1_1concurrent.html">concurrent</a></li>
+    <li class="navelem"><a class="el" href="namespacebricks.html">bricks</a></li><li class="navelem"><a class="el" href="classbricks_1_1rw__lock.html">rw_lock</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

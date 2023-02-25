@@ -1,7 +1,7 @@
 var hierarchy =
 [
     [ "Class", null, [
-      [ "bricks::concurrent< Class >", "classbricks_1_1concurrent.html", null ]
+      [ "bricks::rw_lock< Class >", "classbricks_1_1rw__lock.html", null ]
     ] ],
     [ "std::exception", null, [
       [ "std::runtime_error", null, [

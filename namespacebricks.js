@@ -1,10 +1,10 @@
 var namespacebricks =
 [
     [ "bad_result_access", "classbricks_1_1bad__result__access.html", null ],
-    [ "concurrent", "classbricks_1_1concurrent.html", "classbricks_1_1concurrent" ],
     [ "has_find", "structbricks_1_1has__find.html", "structbricks_1_1has__find" ],
     [ "is_iterator", "structbricks_1_1is__iterator.html", null ],
     [ "result", "classbricks_1_1result.html", "classbricks_1_1result" ],
+    [ "rw_lock", "classbricks_1_1rw__lock.html", "classbricks_1_1rw__lock" ],
     [ "timer", "classbricks_1_1timer.html", "classbricks_1_1timer" ],
     [ "err", "namespacebricks.html#a56141134ef4783cc27e2f3e970dbedf5", null ],
     [ "ok", "namespacebricks.html#a19b2ba7d93c79fd196404d3fc50eac4f", null ],

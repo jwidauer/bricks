@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['result_0',['result',['../classbricks_1_1result.html',1,'bricks']]]
+  ['timer_0',['timer',['../classbricks_1_1timer.html',1,'bricks']]]
 ];
