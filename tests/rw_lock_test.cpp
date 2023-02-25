@@ -1,18 +1,18 @@
 #include <doctest/doctest.h>
 
 #include <algorithm>
-#include <bricks/concurrent.hpp>
+#include <bricks/rw_lock.hpp>
 #include <thread>
 #include <vector>
 
 #include "test_error.hpp"
 
-TEST_SUITE_BEGIN("[concurrent]");
+TEST_SUITE_BEGIN("[rw_lock]");
 
 TEST_CASE("example")
 {
-  /// [concurrent-example]
-  bricks::concurrent<std::vector<int>> vec{3, 2, 1};
+  /// [rw_lock-example]
+  bricks::rw_lock<std::vector<int>> vec{3, 2, 1};
 
   vec.write()->push_back(4);  // Guaranteed to be thread safe write.
 
@@ -36,12 +36,12 @@ TEST_CASE("example")
     auto safe_write = vec.write();
     std::sort(safe_write->begin(), safe_write->end());
   }  // Write lock is released here.
-  /// [concurrent-example]
+  /// [rw_lock-example]
 }
 
 TEST_CASE("Underlying constructor works")
 {
-  bricks::concurrent<std::vector<int>> c(3, 1);
+  bricks::rw_lock<std::vector<int>> c(3, 1);
   auto r = c.read();
   CHECK(r->size() == 3);
   CHECK(r->at(0) == 1);
@@ -51,7 +51,7 @@ TEST_CASE("Underlying constructor works")
 
 TEST_CASE("Underlying constructor works with initializer list")
 {
-  bricks::concurrent<std::vector<int>> c({1, 2, 3});
+  bricks::rw_lock<std::vector<int>> c({1, 2, 3});
   auto r = c.read();
   CHECK(r->size() == 3);
   CHECK(r->at(0) == 1);
@@ -61,7 +61,7 @@ TEST_CASE("Underlying constructor works with initializer list")
 
 TEST_CASE("Concurrent read from same thread doesn't block")
 {
-  bricks::concurrent<std::vector<int>> c({1, 2, 3});
+  bricks::rw_lock<std::vector<int>> c({1, 2, 3});
   auto r = c.read();
   CHECK(r->size() == 3);
   CHECK(r->at(0) == 1);
@@ -77,7 +77,7 @@ TEST_CASE("Concurrent read from same thread doesn't block")
 
 TEST_CASE("Reading is read only")
 {
-  bricks::concurrent<std::vector<int>> c({1, 2, 3});
+  bricks::rw_lock<std::vector<int>> c({1, 2, 3});
   auto r = c.read();
   CHECK(r->size() == 3);
   CHECK(r->at(0) == 1);
@@ -89,7 +89,7 @@ TEST_CASE("Reading is read only")
 
 TEST_CASE("Writing is read-write")
 {
-  bricks::concurrent<std::vector<int>> c({1, 2, 3});
+  bricks::rw_lock<std::vector<int>> c({1, 2, 3});
   auto w = c.write();
 
   w->push_back(4);
@@ -102,7 +102,7 @@ TEST_CASE("Writing is read-write")
 
 TEST_CASE("Reading unlocks at end of scope")
 {
-  bricks::concurrent<std::vector<int>> c({1, 2, 3});
+  bricks::rw_lock<std::vector<int>> c({1, 2, 3});
   {
     auto r = c.read();
     CHECK(r->size() == 3);
@@ -122,7 +122,7 @@ TEST_CASE("Reading unlocks at end of scope")
 
 TEST_CASE("Writing unlocks at end of scope")
 {
-  bricks::concurrent<std::vector<int>> c({1, 2, 3});
+  bricks::rw_lock<std::vector<int>> c({1, 2, 3});
   {
     auto w = c.write();
     w->push_back(4);
@@ -143,7 +143,7 @@ TEST_CASE("Writing unlocks at end of scope")
 
 TEST_CASE("Writing unlocks at end of scope even if exception is thrown" * doctest::timeout(0.5))
 {
-  bricks::concurrent<std::vector<int>> c({1, 2, 3});
+  bricks::rw_lock<std::vector<int>> c({1, 2, 3});
   try {
     auto w = c.write();
     w->push_back(4);
@@ -167,7 +167,7 @@ TEST_CASE("Writing unlocks at end of scope even if exception is thrown" * doctes
 
 TEST_CASE("Reading unlocks at end of scope even if exception is thrown" * doctest::timeout(0.5))
 {
-  bricks::concurrent<std::vector<int>> c({1, 2, 3});
+  bricks::rw_lock<std::vector<int>> c({1, 2, 3});
   try {
     auto r = c.read();
     CHECK(r->size() == 3);
@@ -190,7 +190,7 @@ TEST_CASE("Reading unlocks at end of scope even if exception is thrown" * doctes
 
 TEST_CASE("Writing from separate threads is race free")
 {
-  bricks::concurrent<std::vector<int>> c({1, 2, 3});
+  bricks::rw_lock<std::vector<int>> c({1, 2, 3});
   std::thread t1([&c]() {
     auto w = c.write();
     w->push_back(4);
@@ -211,7 +211,7 @@ TEST_CASE("Writing from separate threads is race free")
 
 TEST_CASE("Writing blocks reading from separate threads")
 {
-  bricks::concurrent<std::vector<int>> c({1, 2, 3});
+  bricks::rw_lock<std::vector<int>> c({1, 2, 3});
   std::thread t1([&c]() {
     auto w = c.write();
     std::this_thread::sleep_for(std::chrono::milliseconds(100));

@@ -6,12 +6,12 @@ inc_dir = include_directories('.')
 headers = [
     'bricks/algorithm.hpp',
     'bricks/charconv.hpp',
-    'bricks/concurrent.hpp',
     'bricks/detail/contains.hpp',
     'bricks/detail/index_of.hpp',
     'bricks/enumerate.hpp',
     'bricks/result.hpp',
     'bricks/reverse.hpp',
+    'bricks/rw_lock.hpp',
     'bricks/timer.hpp',
     'bricks/type_traits.hpp',
     'bricks/zip.hpp',
