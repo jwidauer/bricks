@@ -4,7 +4,7 @@ threads_dep = dependency('threads')
 sources = [
     'algorithm_test.cpp',
     'charconv_test.cpp',
-    'concurrent_test.cpp',
+    'rw_lock_test.cpp',
     'contains_test.cpp',
     'enumerate_test.cpp',
     'index_of_test.cpp',
