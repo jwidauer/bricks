@@ -84,16 +84,24 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v3
+
       - name: Generate documentation
         uses: mattnotmitt/doxygen-action@v1.9.5
         with:
           working-directory: docs
           doxyfile-path: Doxyfile
+
       - name: Upload documentation as artifact
         uses: actions/upload-artifact@v3
         with:
           name: docs
           path: docs/html
+
+      - name: Upload documentation to github pages
+        if: github.ref == 'refs/heads/main'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: docs/html
 
   release-please:
     runs-on: ubuntu-22.04
