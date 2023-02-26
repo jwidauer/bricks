@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value_5ftype_0',['value_type',['../classbricks_1_1result.html#a21aebcf1057005dc1fe041cbd5a3cd5c',1,'bricks::result']]]
+  ['ok_0',['ok',['../namespacebricks.html#a19b2ba7d93c79fd196404d3fc50eac4f',1,'bricks']]]
 ];

@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['map_0',['map',['../classbricks_1_1result.html#a702d25e354097a9c7a792f42064c4f78',1,'bricks::result']]],
-  ['map_5ferror_1',['map_error',['../classbricks_1_1result.html#a5fa2b6f0ef4f8a46f342e9b8a0a6dca3',1,'bricks::result']]],
-  ['map_5for_2',['map_or',['../classbricks_1_1result.html#a583d178949677efba703dddf75d679e9',1,'bricks::result']]],
-  ['map_5for_5felse_3',['map_or_else',['../classbricks_1_1result.html#ad76b4f4b85fbe87803c8dbf5990cfce9',1,'bricks::result']]]
+  ['lock_0',['lock',['../classbricks_1_1mutex.html#a3065411c45e1e799a7010600d1bc267a',1,'bricks::mutex::lock() noexcept -&gt; lock_guard'],['../classbricks_1_1mutex.html#a7d1bfb7e193335d4856cb31b7201e4be',1,'bricks::mutex::lock() const noexcept -&gt; const_lock_guard']]]
 ];

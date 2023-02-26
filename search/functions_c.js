@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['unwrap_0',['unwrap',['../classbricks_1_1result.html#a6b984365b5611cafe6c5ad8ebfa3fa9c',1,'bricks::result']]],
-  ['unwrap_5ferror_1',['unwrap_error',['../classbricks_1_1result.html#aa2f4125f05de654ebb7033939dd1de51',1,'bricks::result']]],
-  ['unwrap_5for_2',['unwrap_or',['../classbricks_1_1result.html#adc5b09e34960d2afbcae03264a65f595',1,'bricks::result']]],
-  ['unwrap_5for_5fdefault_3',['unwrap_or_default',['../classbricks_1_1result.html#abaccfa91669612eaa548f3e889d6bc43',1,'bricks::result']]],
-  ['unwrap_5for_5felse_4',['unwrap_or_else',['../classbricks_1_1result.html#ab467ecbc8adfc40cce5196ca220bc07c',1,'bricks::result']]]
+  ['timer_0',['timer',['../classbricks_1_1timer.html#a3dd2c527d4e639f08c28792aec82e80d',1,'bricks::timer::timer() noexcept'],['../classbricks_1_1timer.html#a2743b96714dae4b2ed314f153d94aac3',1,'bricks::timer::timer(const timer &amp;)=delete'],['../classbricks_1_1timer.html#a5e655380c943edb14fa94f4228873886',1,'bricks::timer::timer(timer &amp;&amp;)=default']]],
+  ['to_5fstring_1',['to_string',['../namespacebricks.html#ab48b3432f6b25c66c5669c3b5cdb6114',1,'bricks']]]
 ];

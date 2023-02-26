@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zip_0',['zip',['../namespacebricks.html#a464e63cab89ecd30b76fb2f3ed206f00',1,'bricks']]]
+  ['write_0',['write',['../classbricks_1_1rw__lock.html#acf8d296f40345487f707bde1752bd655',1,'bricks::rw_lock']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['write_0',['write',['../classbricks_1_1rw__lock.html#acf8d296f40345487f707bde1752bd655',1,'bricks::rw_lock']]]
+  ['values_0',['values',['../namespacebricks.html#a73112939fcac4c4eced690eff476e781',1,'bricks']]]
 ];

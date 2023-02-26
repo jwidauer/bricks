@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['filter_0',['filter',['../namespacebricks.html#a36ed2e34e70f88bd62f952a412b852fd',1,'bricks']]],
-  ['from_5fstring_1',['from_string',['../namespacebricks.html#a579b90b8768aaa590ffeb462ac0d5535',1,'bricks']]],
-  ['from_5ftry_5for_2',['from_try_or',['../classbricks_1_1result.html#a0a1531f1770d4b75bc44f637c56328cd',1,'bricks::result']]],
-  ['from_5ftry_5for_5fdefault_3',['from_try_or_default',['../classbricks_1_1result.html#a01a671e3420714fc7d389202aa0f4515',1,'bricks::result']]],
-  ['from_5ftry_5for_5felse_4',['from_try_or_else',['../classbricks_1_1result.html#a7ec1bb36b6a4e4b47026380e8fd07340',1,'bricks::result']]]
+  ['enumerate_0',['enumerate',['../namespacebricks.html#ab3ae00555224508fa002c2d40d0c83b0',1,'bricks']]],
+  ['enumerate_2ehpp_1',['enumerate.hpp',['../enumerate_8hpp.html',1,'']]],
+  ['err_2',['err',['../namespacebricks.html#a56141134ef4783cc27e2f3e970dbedf5',1,'bricks']]],
+  ['error_5ftype_3',['error_type',['../classbricks_1_1result.html#a9b8311e26db21f89e2482a499ef13b6c',1,'bricks::result']]],
+  ['expect_4',['expect',['../classbricks_1_1result.html#a92bf3bf0dfe7b1797589fe498dc98b3c',1,'bricks::result']]],
+  ['expect_5ferror_5',['expect_error',['../classbricks_1_1result.html#a8d75a95f5125b0535eca50e278fb2b6f',1,'bricks::result']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['_7eresult_0',['~result',['../classbricks_1_1result.html#a04f4c2252597e0ea52ec5d0324165207',1,'bricks::result']]],
-  ['_7etimer_1',['~timer',['../classbricks_1_1timer.html#a20257d9108b5d271335b8d6b6b446be9',1,'bricks::timer']]]
+  ['write_0',['write',['../classbricks_1_1rw__lock.html#acf8d296f40345487f707bde1752bd655',1,'bricks::rw_lock']]],
+  ['write_5fguard_1',['write_guard',['../classbricks_1_1rw__lock.html#a34fbab51a0144d534e72cec42b8de0ca',1,'bricks::rw_lock']]],
+  ['write_5fguard_2ehpp_2',['write_guard.hpp',['../write__guard_8hpp.html',1,'']]]
 ];

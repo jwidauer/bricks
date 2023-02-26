@@ -114,8 +114,9 @@ $(document).ready(function(){initNavTree('classbricks_1_1rw__lock.html',''); ini
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classbricks_1_1rw__lock-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">bricks::rw_lock&lt; Class &gt; Class Template Reference</div></div>
 </div><!--header-->
@@ -126,14 +127,30 @@ $(document).ready(function(){initNavTree('classbricks_1_1rw__lock.html',''); ini
 
 <p><code>#include &lt;<a class="el" href="rw__lock_8hpp_source.html">rw_lock.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:aa2215728a3ac4cc56d55ba40c6f0bf18"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbricks_1_1rw__lock.html#aa2215728a3ac4cc56d55ba40c6f0bf18">value_type</a> = Class</td></tr>
+<tr class="separator:aa2215728a3ac4cc56d55ba40c6f0bf18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3beb1a63b5ca89fa66ecb7b851737e0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbricks_1_1rw__lock.html#ad3beb1a63b5ca89fa66ecb7b851737e0">read_guard</a> = detail::read_guard&lt; <a class="el" href="classbricks_1_1rw__lock.html">rw_lock</a> &gt;</td></tr>
+<tr class="separator:ad3beb1a63b5ca89fa66ecb7b851737e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34fbab51a0144d534e72cec42b8de0ca"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbricks_1_1rw__lock.html#a34fbab51a0144d534e72cec42b8de0ca">write_guard</a> = detail::write_guard&lt; <a class="el" href="classbricks_1_1rw__lock.html">rw_lock</a>, std::shared_mutex &gt;</td></tr>
+<tr class="separator:a34fbab51a0144d534e72cec42b8de0ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a83b8e2208de31a88c85d316d6dd39fc4"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbricks_1_1rw__lock.html#a83b8e2208de31a88c85d316d6dd39fc4">read</a> () const noexcept -&gt; read_guard</td></tr>
+<tr class="memitem:a83b8e2208de31a88c85d316d6dd39fc4"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbricks_1_1rw__lock.html#a83b8e2208de31a88c85d316d6dd39fc4">read</a> () const noexcept -&gt; <a class="el" href="classbricks_1_1rw__lock.html#ad3beb1a63b5ca89fa66ecb7b851737e0">read_guard</a></td></tr>
 <tr class="memdesc:a83b8e2208de31a88c85d316d6dd39fc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locks the resource for reading, blocking until the lock is acquired.  <a href="classbricks_1_1rw__lock.html#a83b8e2208de31a88c85d316d6dd39fc4">More...</a><br /></td></tr>
 <tr class="separator:a83b8e2208de31a88c85d316d6dd39fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf8d296f40345487f707bde1752bd655"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbricks_1_1rw__lock.html#acf8d296f40345487f707bde1752bd655">write</a> () noexcept -&gt; write_guard</td></tr>
+<tr class="memitem:acf8d296f40345487f707bde1752bd655"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbricks_1_1rw__lock.html#acf8d296f40345487f707bde1752bd655">write</a> () noexcept -&gt; <a class="el" href="classbricks_1_1rw__lock.html#a34fbab51a0144d534e72cec42b8de0ca">write_guard</a></td></tr>
 <tr class="memdesc:acf8d296f40345487f707bde1752bd655"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locks the resource for writing, blocking until the lock is acquired.  <a href="classbricks_1_1rw__lock.html#acf8d296f40345487f707bde1752bd655">More...</a><br /></td></tr>
 <tr class="separator:acf8d296f40345487f707bde1752bd655"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a0acc186fdef8a765f6000a2678e6e22d"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbricks_1_1rw__lock.html#a0acc186fdef8a765f6000a2678e6e22d">detail::read_guard&lt; rw_lock &gt;</a></td></tr>
+<tr class="separator:a0acc186fdef8a765f6000a2678e6e22d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa08cf565556959e6839298b3338ec69d"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbricks_1_1rw__lock.html#aa08cf565556959e6839298b3338ec69d">detail::write_guard&lt; rw_lock, std::shared_mutex &gt;</a></td></tr>
+<tr class="separator:aa08cf565556959e6839298b3338ec69d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class Class&gt;<br />
@@ -163,8 +180,8 @@ class bricks::rw_lock&lt; Class &gt;</div><p >A reader-writer lock. </p>
 <div class="line">    <span class="keyword">auto</span> safe_write = vec.write();</div>
 <div class="line">    std::sort(safe_write-&gt;begin(), safe_write-&gt;end());</div>
 <div class="line">  }  <span class="comment">// Write lock is released here.</span></div>
-<div class="ttc" id="aclassbricks_1_1rw__lock_html"><div class="ttname"><a href="classbricks_1_1rw__lock.html">bricks::rw_lock</a></div><div class="ttdoc">A reader-writer lock.</div><div class="ttdef"><b>Definition:</b> rw_lock.hpp:25</div></div>
-<div class="ttc" id="aclassbricks_1_1rw__lock_html_acf8d296f40345487f707bde1752bd655"><div class="ttname"><a href="classbricks_1_1rw__lock.html#acf8d296f40345487f707bde1752bd655">bricks::rw_lock::write</a></div><div class="ttdeci">auto write() noexcept -&gt; write_guard</div><div class="ttdoc">Locks the resource for writing, blocking until the lock is acquired.</div><div class="ttdef"><b>Definition:</b> rw_lock.hpp:48</div></div>
+<div class="ttc" id="aclassbricks_1_1rw__lock_html"><div class="ttname"><a href="classbricks_1_1rw__lock.html">bricks::rw_lock</a></div><div class="ttdoc">A reader-writer lock.</div><div class="ttdef"><b>Definition:</b> rw_lock.hpp:28</div></div>
+<div class="ttc" id="aclassbricks_1_1rw__lock_html_acf8d296f40345487f707bde1752bd655"><div class="ttname"><a href="classbricks_1_1rw__lock.html#acf8d296f40345487f707bde1752bd655">bricks::rw_lock::write</a></div><div class="ttdeci">auto write() noexcept -&gt; write_guard</div><div class="ttdoc">Locks the resource for writing, blocking until the lock is acquired.</div><div class="ttdef"><b>Definition:</b> rw_lock.hpp:55</div></div>
 </div><!-- fragment --><p >Very similar to rust's <a href="https://doc.rust-lang.org/std/sync/struct.RwLock.html">std::sync::RwLock</a>.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -172,7 +189,56 @@ class bricks::rw_lock&lt; Class &gt;</div><p >A reader-writer lock. </p>
   </table>
   </dd>
 </dl>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="ad3beb1a63b5ca89fa66ecb7b851737e0" name="ad3beb1a63b5ca89fa66ecb7b851737e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3beb1a63b5ca89fa66ecb7b851737e0">&#9670;&#160;</a></span>read_guard</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Class &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classbricks_1_1rw__lock.html">bricks::rw_lock</a>&lt; Class &gt;::read_guard =  detail::read_guard&lt;<a class="el" href="classbricks_1_1rw__lock.html">rw_lock</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa2215728a3ac4cc56d55ba40c6f0bf18" name="aa2215728a3ac4cc56d55ba40c6f0bf18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2215728a3ac4cc56d55ba40c6f0bf18">&#9670;&#160;</a></span>value_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Class &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classbricks_1_1rw__lock.html">bricks::rw_lock</a>&lt; Class &gt;::value_type =  Class</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34fbab51a0144d534e72cec42b8de0ca" name="a34fbab51a0144d534e72cec42b8de0ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34fbab51a0144d534e72cec42b8de0ca">&#9670;&#160;</a></span>write_guard</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Class &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classbricks_1_1rw__lock.html">bricks::rw_lock</a>&lt; Class &gt;::write_guard =  detail::write_guard&lt;<a class="el" href="classbricks_1_1rw__lock.html">rw_lock</a>, std::shared_mutex&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a83b8e2208de31a88c85d316d6dd39fc4" name="a83b8e2208de31a88c85d316d6dd39fc4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a83b8e2208de31a88c85d316d6dd39fc4">&#9670;&#160;</a></span>read()</h2>
 
@@ -188,7 +254,7 @@ template&lt;class Class &gt; </div>
           <td class="memname">auto <a class="el" href="classbricks_1_1rw__lock.html">bricks::rw_lock</a>&lt; Class &gt;::read </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const -&gt; read_guard </td>
+          <td> const -&gt; <a class="el" href="classbricks_1_1rw__lock.html#ad3beb1a63b5ca89fa66ecb7b851737e0">read_guard</a> </td>
         </tr>
       </table>
   </td>
@@ -218,7 +284,7 @@ template&lt;class Class &gt; </div>
           <td class="memname">auto <a class="el" href="classbricks_1_1rw__lock.html">bricks::rw_lock</a>&lt; Class &gt;::write </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> -&gt; write_guard </td>
+          <td> -&gt; <a class="el" href="classbricks_1_1rw__lock.html#a34fbab51a0144d534e72cec42b8de0ca">write_guard</a> </td>
         </tr>
       </table>
   </td>
@@ -230,6 +296,55 @@ template&lt;class Class &gt; </div>
 
 <p>Locks the resource for writing, blocking until the lock is acquired. </p>
 <dl class="section return"><dt>Returns</dt><dd>write_guard An RAII style write guard, which will release the lock when it goes out of scope. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a0acc186fdef8a765f6000a2678e6e22d" name="a0acc186fdef8a765f6000a2678e6e22d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0acc186fdef8a765f6000a2678e6e22d">&#9670;&#160;</a></span>detail::read_guard&lt; rw_lock &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Class &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class detail::read_guard&lt; <a class="el" href="classbricks_1_1rw__lock.html">rw_lock</a> &gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa08cf565556959e6839298b3338ec69d" name="aa08cf565556959e6839298b3338ec69d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa08cf565556959e6839298b3338ec69d">&#9670;&#160;</a></span>detail::write_guard&lt; rw_lock, std::shared_mutex &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Class &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class detail::write_guard&lt; <a class="el" href="classbricks_1_1rw__lock.html">rw_lock</a>, std::shared_mutex &gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

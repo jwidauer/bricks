@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ok_0',['ok',['../namespacebricks.html#a19b2ba7d93c79fd196404d3fc50eac4f',1,'bricks']]]
+  ['lock_5fguard_0',['lock_guard',['../classbricks_1_1mutex.html#ad7c4aff6d1547db881dfb8596a9a10f5',1,'bricks::mutex']]]
 ];

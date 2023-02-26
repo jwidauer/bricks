@@ -4,6 +4,7 @@ var annotated_dup =
       [ "bad_result_access", "classbricks_1_1bad__result__access.html", null ],
       [ "has_find", "structbricks_1_1has__find.html", "structbricks_1_1has__find" ],
       [ "is_iterator", "structbricks_1_1is__iterator.html", null ],
+      [ "mutex", "classbricks_1_1mutex.html", "classbricks_1_1mutex" ],
       [ "result", "classbricks_1_1result.html", "classbricks_1_1result" ],
       [ "rw_lock", "classbricks_1_1rw__lock.html", "classbricks_1_1rw__lock" ],
       [ "timer", "classbricks_1_1timer.html", "classbricks_1_1timer" ]

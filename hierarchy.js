@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "Class", null, [
+      [ "bricks::mutex< Class, >", "classbricks_1_1mutex.html", null ],
       [ "bricks::rw_lock< Class >", "classbricks_1_1rw__lock.html", null ]
     ] ],
     [ "std::exception", null, [
