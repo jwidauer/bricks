@@ -2,6 +2,9 @@
 
 #include <shared_mutex>
 
+#include "detail/read_guard.hpp"
+#include "detail/write_guard.hpp"
+
 namespace bricks {
 
 /**
@@ -24,11 +27,15 @@ namespace bricks {
 template <class Class>
 class rw_lock : private Class {
  private:
-  // Forward declarations
-  class read_guard;
-  class write_guard;
+  friend class detail::read_guard<rw_lock>;
+  friend class detail::write_guard<rw_lock, std::shared_mutex>;
 
  public:
+  using value_type = Class;
+
+  using read_guard = detail::read_guard<rw_lock>;
+  using write_guard = detail::write_guard<rw_lock, std::shared_mutex>;
+
   using Class::Class;
 
   /**
@@ -48,54 +55,6 @@ class rw_lock : private Class {
   auto write() noexcept -> write_guard { return write_guard{*this, mutex_}; }
 
  private:
-  class read_guard {
-   public:
-    read_guard(const rw_lock& this_in, std::shared_mutex& mutex_in) noexcept
-        : this_(this_in), mutex_(mutex_in)
-    {
-      mutex_.lock_shared();
-    }
-
-    ~read_guard() noexcept { mutex_.unlock_shared(); }
-
-    read_guard(const read_guard&) = default;
-    auto operator=(const read_guard&) -> read_guard& = default;
-
-    auto operator->() const noexcept -> const Class* { return &this_; }
-
-    auto operator*() const noexcept -> const Class& { return this_; }
-
-   private:
-    const rw_lock& this_;
-    std::shared_mutex& mutex_;
-  };
-
-  class write_guard {
-   public:
-    write_guard(rw_lock& this_in, std::shared_mutex& mutex_in) noexcept
-        : this_(this_in), mutex_(mutex_in)
-    {
-      mutex_.lock();
-    }
-
-    ~write_guard() noexcept { mutex_.unlock(); }
-
-    write_guard(const write_guard&) = default;
-    auto operator=(const write_guard&) -> write_guard& = default;
-
-    auto operator->() noexcept -> Class* { return &this_; }
-
-    auto operator->() const noexcept -> const Class* { return &this_; }
-
-    auto operator*() noexcept -> Class& { return this_; }
-
-    auto operator*() const noexcept -> const Class& { return this_; }
-
-   private:
-    rw_lock& this_;
-    std::shared_mutex& mutex_;
-  };
-
   mutable std::shared_mutex mutex_;
 };
 
