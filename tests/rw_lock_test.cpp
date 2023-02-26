@@ -230,4 +230,21 @@ TEST_CASE("Writing blocks reading from separate threads")
   t2.join();
 }
 
+TEST_CASE("read lock can be moved")
+{
+  bricks::rw_lock<std::vector<int>> c({1, 2, 3});
+  auto r1 = c.read();
+  auto r2 = std::move(r1);
+  CHECK(r2->size() == 3);
+}
+
+TEST_CASE("write lock can be moved")
+{
+  bricks::rw_lock<std::vector<int>> c({1, 2, 3});
+  auto w1 = c.write();
+  auto w2 = std::move(w1);
+  w2->push_back(4);
+  CHECK(w2->size() == 4);
+}
+
 TEST_SUITE_END();
