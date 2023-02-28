@@ -6,55 +6,67 @@
 #include <string>
 #include <string_view>
 
+#include "result.hpp"
+
 namespace bricks {
 
 /**
  * @brief Exceptionlessly convert a number to a string.
  *
+ * This function is a wrapper around `std::to_chars` and will return the same error codes.
+ *
  * Example:
- * ```cpp
- * std::string s;
- * if (bricks::to_string(42, s)) {
- *   std::cout << s << std::endl; // prints 42
- * }
- * ```
+ * @snippet charconv_test.cpp to_string-example
  *
  * @tparam T The type of number to convert.
  * @param value The number to convert.
- * @param str The string to write to.
- * @return true If the conversion was successful, false otherwise.
+ * @return result<std::string, std::errc> Result of the conversion. Will contain the error code
+ *        if the conversion failed.
  */
 template <typename T>
-auto to_string(const T& value, std::string& str) noexcept -> bool
+auto to_string(const T& value) noexcept -> result<std::string, std::errc>
 {
-  str.clear();
-  str.resize(std::numeric_limits<T>::digits10 + 1);
+  std::string str(std::numeric_limits<T>::digits10 + 1, '\0');
   auto [ptr, ec] = std::to_chars(str.data(), str.data() + str.size(), value);
-  str.resize(ptr - str.data());
-  return ec == std::errc();
+
+  if (ec != std::errc()) {
+    return ec;
+  }
+
+  str.resize(std::distance(str.data(), ptr));
+  return str;
 }
 
 /**
  * @brief Exceptionlessly convert a string to a number.
  *
+ * This function is a wrapper around `std::from_chars` and will return the same error codes.
+ * It, however, will return `std::errc::invalid_argument` if the string contains
+ * characters that are not part of the number.
+ *
  * Example:
- * ```cpp
- * int i;
- * if (bricks::from_string("42", i)) {
- *   std::cout << i << std::endl; // prints 42
- * }
- * ```
+ * @snippet charconv_test.cpp from_string-example
  *
  * @tparam T The type of number to convert.
  * @param str The string to convert.
- * @param value The number to write to.
- * @return true If the conversion was successful, false otherwise.
+ * @return result<T, std::errc> Result of the conversion. Will contain the error code
+ *       if the conversion failed.
  */
 template <typename T>
-auto from_string(const std::string_view& str, T& value) noexcept -> bool
+auto from_string(const std::string_view& str) noexcept -> result<T, std::errc>
 {
+  T value;
   auto [ptr, ec] = std::from_chars(str.data(), str.data() + str.size(), value);
-  return ec == std::errc() && ptr == str.data() + str.size();
+
+  if (ec != std::errc()) {
+    return ec;
+  }
+
+  if (ptr != str.data() + str.size()) {
+    return std::errc::invalid_argument;
+  }
+
+  return value;
 }
 
 }  // namespace bricks
