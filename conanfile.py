@@ -1,9 +1,13 @@
-from conans import ConanFile, Meson, tools
+from conan import ConanFile, __version__ as conan_version
+from conan.tools.cmake import cmake_layout
+from conan.tools.meson import MesonToolchain, Meson
+from conan.tools.files import load
+from conan.tools.build import check_min_cppstd
+from conan.tools.scm import Version
 
 
-class CppTemplateConan(ConanFile):
+class BricksConan(ConanFile):
     name = "bricks"
-    version = "0.1.0"
     license = "<Put the package license here>"
     author = "Jakob Widauer jakob.widauer@gmail.com"
     url = "https://github.com/jwidauer/bricks"
@@ -16,22 +20,36 @@ class CppTemplateConan(ConanFile):
         "build_coverage": [True, False],
     }
     default_options = {"shared": False, "fPIC": True, "build_coverage": False}
-    generators = "pkg_config"
-    exports_sources = "src/*"
-    tool_requires = "doctest/2.4.9"
+    exports_sources = "include/*", "tests/*"
+    no_copy_source = True
+    generators = "PkgConfigDeps", "VirtualBuildEnv"
+    requires = "doctest/2.4.9"
 
-    def config_options(self):
-        if self.settings.os == "Windows":
-            del self.options.fPIC
+    def set_version(self):
+        if conan_version >= Version("2.0.0"):
+            self.version = load(self, "version.txt")
+
+    def validate(self):
+        check_min_cppstd(self, 17)
+
+    # def layout(self):
+    #     if conan_version >= Version("2.0.0"):
+    #         cmake_layout(self)
+
+    def generate(self):
+        tc = MesonToolchain(self)
+        tc.project_options["b_coverage"] = bool(self.options.build_coverage)
+        tc.generate()
 
     def build(self):
-        meson = Meson(self)
-        meson.configure(defs={"b_coverage": self.options.build_coverage})
-        meson.build()
+        if not self.conf.get("tools.build:skip_test", default=False):
+            meson = Meson(self)
+            meson.configure()
+            meson.build()
 
     def package(self):
         meson = Meson(self)
         meson.install()
 
-    def package_info(self):
-        self.cpp_info.libs = tools.collect_libs(self)
+    def package_id(self):
+        self.info.clear()
