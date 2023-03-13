@@ -20,13 +20,18 @@ namespace bricks {
  *
  * @tparam T The type of number to convert.
  * @param value The number to convert.
+ * @param buffer_size The size of the buffer to use for the conversion. If the buffer is too small
+ *        the conversion will fail with `std::errc::value_too_large`. Can be omitted if the type
+ *        is an integral type.
  * @return result<std::string, std::errc> Result of the conversion. Will contain the error code
  *        if the conversion failed.
  */
 template <typename T>
-auto to_string(const T& value) noexcept -> result<std::string, std::errc>
+auto to_string(const T& value,
+               std::size_t buffer_size = (std::numeric_limits<T>::digits10 + 2)) noexcept
+    -> result<std::string, std::errc>
 {
-  std::string str(std::numeric_limits<T>::digits10 + 1, '\0');
+  std::string str(buffer_size, '\0');
   auto [ptr, ec] = std::to_chars(str.data(), str.data() + str.size(), value);
 
   if (ec != std::errc()) {

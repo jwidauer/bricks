@@ -7,7 +7,7 @@
 
 TEST_SUITE_BEGIN("[charconv]");
 
-TEST_CASE_TEMPLATE("non throwing to_string", T, int, long, long long, unsigned, unsigned long,
+TEST_CASE_TEMPLATE("to_string with valid values", T, int, long, long long, unsigned, unsigned long,
                    unsigned long long)
 {
   T value = 42;
@@ -21,6 +21,20 @@ TEST_CASE_TEMPLATE("non throwing to_string", T, int, long, long long, unsigned, 
     REQUIRE(output.is_value());
     CHECK(output.unwrap() == "-42");
   }
+}
+
+TEST_CASE("to_string with float")
+{
+  auto output = bricks::to_string(1.0F / 3.0F, 10);
+  REQUIRE(output.is_value());
+  CHECK(output.unwrap() == "0.33333334");
+}
+
+TEST_CASE("to_string with invalid values")
+{
+  auto output = bricks::to_string(1.0F / 3.0F);
+  REQUIRE(output.is_error());
+  CHECK(output.unwrap_error() == std::errc::value_too_large);
 }
 
 TEST_CASE("to_string example")
