@@ -1,6 +1,6 @@
 #include <doctest/doctest.h>
 
-#include <bricks/reverse.hpp>
+#include <bricks/ranges.hpp>
 #include <numeric>
 #include <vector>
 

@@ -1,6 +1,6 @@
 #include <doctest/doctest.h>
 
-#include <bricks/enumerate.hpp>
+#include <bricks/ranges.hpp>
 #include <numeric>
 #include <tuple>
 #include <vector>

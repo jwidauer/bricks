@@ -1,6 +1,6 @@
 #include <doctest/doctest.h>
 
-#include <bricks/filter.hpp>
+#include <bricks/ranges.hpp>
 #include <vector>
 
 TEST_SUITE_BEGIN("[filter]");

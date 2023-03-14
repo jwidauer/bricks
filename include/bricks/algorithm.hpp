@@ -74,28 +74,6 @@ constexpr auto bind_front(F&& f, FrontArgs&&... front_args)
 }
 
 /**
- * @brief Filter a container using a predicate.
- *
- * Creates a new container of type `Container`, with the elements that satisfy the predicate.
- *
- * Example:
- * @snippet algorithm_test.cpp filter-example
- *
- * @tparam Container The type of the container.
- * @tparam UnaryPredicate The type of the predicate.
- * @param container The container.
- * @param predicate The predicate.
- * @return Container The filtered container.
- */
-template <class Container, class UnaryPredicate>
-auto filter(const Container& container, const UnaryPredicate& predicate) -> Container
-{
-  Container retval;
-  std::copy_if(std::begin(container), std::end(container), std::back_inserter(retval), predicate);
-  return retval;
-}
-
-/**
  * @brief Checks whether a container contains a specific value.
  *
  * If the container has a `find` method, it will be used to check if the container contains the
