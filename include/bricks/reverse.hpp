@@ -1,6 +1,6 @@
 #pragma once
 
-#include <iterator>
+#include "detail/reverse.hpp"
 
 namespace bricks {
 
@@ -8,8 +8,7 @@ namespace bricks {
  * @brief Create a reverse iterator from a range.
  *
  * This function creates a reverse iterator from a range. The range can be any
- * type that has a rbegin and rend function. The reverse iterator can be used in
- * a range-based for loop.
+ * type that has a rbegin and rend function.
  *
  * Example:
  * @snippet reverse_test.cpp reverse-example
@@ -21,20 +20,7 @@ namespace bricks {
 template <typename Range>
 auto reverse(Range& range)
 {
-  using iter_t = decltype(std::rbegin(range));
-
-  class reverser {
-   private:
-    iter_t begin_;
-    const iter_t end_;
-
-   public:
-    explicit reverser(Range& range) : begin_{std::rbegin(range)}, end_{std::rend(range)} {}
-    auto begin() -> iter_t& { return begin_; }
-    auto end() const -> const iter_t& { return end_; }
-  };
-
-  return reverser{range};
+  return detail::reverser<Range>{range};
 }
 
 }  // namespace bricks
