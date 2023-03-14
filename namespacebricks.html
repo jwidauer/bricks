@@ -197,14 +197,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a81e2fa4c1a3e3459b3cea78f1d796564"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a81e2fa4c1a3e3459b3cea78f1d796564">is_ready_at</a> (const std::future&lt; T &gt; &amp;future, const std::chrono::time_point&lt; Clock, Duration &gt; &amp;timeout) noexcept -&gt; bool</td></tr>
 <tr class="memdesc:a81e2fa4c1a3e3459b3cea78f1d796564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether a future is ready at a specific time.  <a href="namespacebricks.html#a81e2fa4c1a3e3459b3cea78f1d796564">More...</a><br /></td></tr>
 <tr class="separator:a81e2fa4c1a3e3459b3cea78f1d796564"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab48b3432f6b25c66c5669c3b5cdb6114"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ab48b3432f6b25c66c5669c3b5cdb6114"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#ab48b3432f6b25c66c5669c3b5cdb6114">to_string</a> (const T &amp;value, std::string &amp;str) noexcept -&gt; bool</td></tr>
-<tr class="memdesc:ab48b3432f6b25c66c5669c3b5cdb6114"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exceptionlessly convert a number to a string.  <a href="namespacebricks.html#ab48b3432f6b25c66c5669c3b5cdb6114">More...</a><br /></td></tr>
-<tr class="separator:ab48b3432f6b25c66c5669c3b5cdb6114"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a579b90b8768aaa590ffeb462ac0d5535"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a579b90b8768aaa590ffeb462ac0d5535"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a579b90b8768aaa590ffeb462ac0d5535">from_string</a> (const std::string_view &amp;str, T &amp;value) noexcept -&gt; bool</td></tr>
-<tr class="memdesc:a579b90b8768aaa590ffeb462ac0d5535"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exceptionlessly convert a string to a number.  <a href="namespacebricks.html#a579b90b8768aaa590ffeb462ac0d5535">More...</a><br /></td></tr>
-<tr class="separator:a579b90b8768aaa590ffeb462ac0d5535"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a160a4be43d95d684366925d6028a406b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a160a4be43d95d684366925d6028a406b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a160a4be43d95d684366925d6028a406b">to_string</a> (const T &amp;value, std::size_t buffer_size=(std::numeric_limits&lt; T &gt;::digits10+2)) noexcept -&gt; <a class="el" href="classbricks_1_1result.html">result</a>&lt; std::string, std::errc &gt;</td></tr>
+<tr class="memdesc:a160a4be43d95d684366925d6028a406b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exceptionlessly convert a number to a string.  <a href="namespacebricks.html#a160a4be43d95d684366925d6028a406b">More...</a><br /></td></tr>
+<tr class="separator:a160a4be43d95d684366925d6028a406b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a006beff646c0efb0edfea15c733b224b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a006beff646c0efb0edfea15c733b224b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a006beff646c0efb0edfea15c733b224b">from_string</a> (const std::string_view &amp;str) noexcept -&gt; <a class="el" href="classbricks_1_1result.html">result</a>&lt; T, std::errc &gt;</td></tr>
+<tr class="memdesc:a006beff646c0efb0edfea15c733b224b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exceptionlessly convert a string to a number.  <a href="namespacebricks.html#a006beff646c0efb0edfea15c733b224b">More...</a><br /></td></tr>
+<tr class="separator:a006beff646c0efb0edfea15c733b224b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3ae00555224508fa002c2d40d0c83b0"><td class="memTemplParams" colspan="2">template&lt;typename Range &gt; </td></tr>
 <tr class="memitem:ab3ae00555224508fa002c2d40d0c83b0"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#ab3ae00555224508fa002c2d40d0c83b0">enumerate</a> (Range &amp;range)</td></tr>
 <tr class="memdesc:ab3ae00555224508fa002c2d40d0c83b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerate a range.  <a href="namespacebricks.html#ab3ae00555224508fa002c2d40d0c83b0">More...</a><br /></td></tr>
@@ -533,8 +533,8 @@ template&lt;class Container , class UnaryPredicate &gt; </div>
 
 </div>
 </div>
-<a id="a579b90b8768aaa590ffeb462ac0d5535" name="a579b90b8768aaa590ffeb462ac0d5535"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a579b90b8768aaa590ffeb462ac0d5535">&#9670;&#160;</a></span>from_string()</h2>
+<a id="a006beff646c0efb0edfea15c733b224b" name="a006beff646c0efb0edfea15c733b224b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a006beff646c0efb0edfea15c733b224b">&#9670;&#160;</a></span>from_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -548,18 +548,8 @@ template&lt;typename T &gt; </div>
           <td class="memname">auto bricks::from_string </td>
           <td>(</td>
           <td class="paramtype">const std::string_view &amp;&#160;</td>
-          <td class="paramname"><em>str</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> -&gt; bool
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td> -&gt; <a class="el" href="classbricks_1_1result.html">result</a>&lt;T, std::errc&gt;
 </td>
         </tr>
       </table>
@@ -571,11 +561,10 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Exceptionlessly convert a string to a number. </p>
-<p >Example: </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> i;</div>
-<div class="line"><span class="keywordflow">if</span> (<a class="code hl_function" href="namespacebricks.html#a579b90b8768aaa590ffeb462ac0d5535">bricks::from_string</a>(<span class="stringliteral">&quot;42&quot;</span>, i)) {</div>
-<div class="line">  std::cout &lt;&lt; i &lt;&lt; std::endl; <span class="comment">// prints 42</span></div>
-<div class="line">}</div>
-<div class="ttc" id="anamespacebricks_html_a579b90b8768aaa590ffeb462ac0d5535"><div class="ttname"><a href="namespacebricks.html#a579b90b8768aaa590ffeb462ac0d5535">bricks::from_string</a></div><div class="ttdeci">auto from_string(const std::string_view &amp;str, T &amp;value) noexcept -&gt; bool</div><div class="ttdoc">Exceptionlessly convert a string to a number.</div><div class="ttdef"><b>Definition:</b> charconv.hpp:54</div></div>
+<p >This function is a wrapper around <code>std::from_chars</code> and will return the same error codes. It, however, will return <code>std::errc::invalid_argument</code> if the string contains characters that are not part of the number.</p>
+<p >Example: </p><div class="fragment"><div class="line">  <span class="keyword">auto</span> value = bricks::from_string&lt;int&gt;(<span class="stringliteral">&quot;42&quot;</span>);</div>
+<div class="line">  REQUIRE(value.is_value());</div>
+<div class="line">  CHECK(value.unwrap() == 42);</div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>The type of number to convert. </td></tr>
@@ -585,11 +574,10 @@ template&lt;typename T &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">str</td><td>The string to convert. </td></tr>
-    <tr><td class="paramname">value</td><td>The number to write to. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true If the conversion was successful, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>result&lt;T, std::errc&gt; Result of the conversion. Will contain the error code if the conversion failed. </dd></dl>
 
 </div>
 </div>
@@ -923,8 +911,8 @@ template&lt;typename Range &gt; </div>
 
 </div>
 </div>
-<a id="ab48b3432f6b25c66c5669c3b5cdb6114" name="ab48b3432f6b25c66c5669c3b5cdb6114"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab48b3432f6b25c66c5669c3b5cdb6114">&#9670;&#160;</a></span>to_string()</h2>
+<a id="a160a4be43d95d684366925d6028a406b" name="a160a4be43d95d684366925d6028a406b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a160a4be43d95d684366925d6028a406b">&#9670;&#160;</a></span>to_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -943,13 +931,13 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>str</em>&#160;</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em> = <code>(std::numeric_limits&lt;T&gt;::digits10&#160;+&#160;2)</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> -&gt; bool
+          <td></td><td> -&gt; <a class="el" href="classbricks_1_1result.html">result</a>&lt;std::string, std::errc&gt;
 </td>
         </tr>
       </table>
@@ -961,11 +949,11 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Exceptionlessly convert a number to a string. </p>
-<p >Example: </p><div class="fragment"><div class="line">std::string s;</div>
-<div class="line"><span class="keywordflow">if</span> (<a class="code hl_function" href="namespacebricks.html#ab48b3432f6b25c66c5669c3b5cdb6114">bricks::to_string</a>(42, s)) {</div>
-<div class="line">  std::cout &lt;&lt; s &lt;&lt; std::endl; <span class="comment">// prints 42</span></div>
-<div class="line">}</div>
-<div class="ttc" id="anamespacebricks_html_ab48b3432f6b25c66c5669c3b5cdb6114"><div class="ttname"><a href="namespacebricks.html#ab48b3432f6b25c66c5669c3b5cdb6114">bricks::to_string</a></div><div class="ttdeci">auto to_string(const T &amp;value, std::string &amp;str) noexcept -&gt; bool</div><div class="ttdoc">Exceptionlessly convert a number to a string.</div><div class="ttdef"><b>Definition:</b> charconv.hpp:28</div></div>
+<p >This function is a wrapper around <code>std::to_chars</code> and will return the same error codes.</p>
+<p >Example: </p><div class="fragment"><div class="line">  <span class="keyword">auto</span> output = <a class="code hl_function" href="namespacebricks.html#a160a4be43d95d684366925d6028a406b">bricks::to_string</a>(42);</div>
+<div class="line">  REQUIRE(output.is_value());</div>
+<div class="line">  CHECK(output.unwrap() == <span class="stringliteral">&quot;42&quot;</span>);</div>
+<div class="ttc" id="anamespacebricks_html_a160a4be43d95d684366925d6028a406b"><div class="ttname"><a href="namespacebricks.html#a160a4be43d95d684366925d6028a406b">bricks::to_string</a></div><div class="ttdeci">auto to_string(const T &amp;value, std::size_t buffer_size=(std::numeric_limits&lt; T &gt;::digits10+2)) noexcept -&gt; result&lt; std::string, std::errc &gt;</div><div class="ttdoc">Exceptionlessly convert a number to a string.</div><div class="ttdef"><b>Definition:</b> charconv.hpp:30</div></div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>The type of number to convert. </td></tr>
@@ -975,11 +963,11 @@ template&lt;typename T &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">value</td><td>The number to convert. </td></tr>
-    <tr><td class="paramname">str</td><td>The string to write to. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>The size of the buffer to use for the conversion. If the buffer is too small the conversion will fail with <code>std::errc::value_too_large</code>. Can be omitted if the type is an integral type. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true If the conversion was successful, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>result&lt;std::string, std::errc&gt; Result of the conversion. Will contain the error code if the conversion failed. </dd></dl>
 
 </div>
 </div>

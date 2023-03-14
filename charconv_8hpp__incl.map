@@ -1,8 +1,16 @@
 <map id="/github/workspace/include/bricks/charconv.hpp" name="/github/workspace/include/bricks/charconv.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="135,5,308,45"/>
+<area shape="rect" id="node1" title=" " alt="" coords="140,5,313,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,93,80,119"/>
 <area shape="rect" id="node3" title=" " alt="" coords="104,93,157,119"/>
-<area shape="rect" id="node4" title=" " alt="" coords="182,93,261,119"/>
-<area shape="rect" id="node5" title=" " alt="" coords="285,93,339,119"/>
-<area shape="rect" id="node6" title=" " alt="" coords="364,93,452,119"/>
+<area shape="rect" id="node4" title=" " alt="" coords="146,167,225,192"/>
+<area shape="rect" id="node5" title=" " alt="" coords="233,93,287,119"/>
+<area shape="rect" id="node6" title=" " alt="" coords="312,93,400,119"/>
+<area shape="rect" id="node7" href="$result_8hpp.html" title=" " alt="" coords="442,93,521,119"/>
+<area shape="rect" id="node8" title=" " alt="" coords="249,167,314,192"/>
+<area shape="rect" id="node9" title=" " alt="" coords="338,167,417,192"/>
+<area shape="rect" id="node10" title=" " alt="" coords="441,167,537,192"/>
+<area shape="rect" id="node11" title=" " alt="" coords="573,240,656,265"/>
+<area shape="rect" id="node12" title=" " alt="" coords="612,167,673,192"/>
+<area shape="rect" id="node13" href="$type__traits_8hpp.html" title=" " alt="" coords="697,167,804,192"/>
+<area shape="rect" id="node14" title=" " alt="" coords="719,240,782,265"/>
 </map>

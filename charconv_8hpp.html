@@ -124,17 +124,26 @@ $(document).ready(function(){initNavTree('charconv_8hpp.html',''); initResizable
 <code>#include &lt;stdexcept&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;string_view&gt;</code><br />
+<code>#include &quot;<a class="el" href="result_8hpp_source.html">result.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for charconv.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="charconv_8hpp__incl.png" border="0" usemap="#a_2github_2workspace_2include_2bricks_2charconv_8hpp" alt=""/></div>
 <map name="a_2github_2workspace_2include_2bricks_2charconv_8hpp" id="a_2github_2workspace_2include_2bricks_2charconv_8hpp">
-<area shape="rect" title=" " alt="" coords="135,5,308,45"/>
+<area shape="rect" title=" " alt="" coords="140,5,313,45"/>
 <area shape="rect" title=" " alt="" coords="5,93,80,119"/>
 <area shape="rect" title=" " alt="" coords="104,93,157,119"/>
-<area shape="rect" title=" " alt="" coords="182,93,261,119"/>
-<area shape="rect" title=" " alt="" coords="285,93,339,119"/>
-<area shape="rect" title=" " alt="" coords="364,93,452,119"/>
+<area shape="rect" title=" " alt="" coords="146,167,225,192"/>
+<area shape="rect" title=" " alt="" coords="233,93,287,119"/>
+<area shape="rect" title=" " alt="" coords="312,93,400,119"/>
+<area shape="rect" href="result_8hpp.html" title=" " alt="" coords="442,93,521,119"/>
+<area shape="rect" title=" " alt="" coords="249,167,314,192"/>
+<area shape="rect" title=" " alt="" coords="338,167,417,192"/>
+<area shape="rect" title=" " alt="" coords="441,167,537,192"/>
+<area shape="rect" title=" " alt="" coords="573,240,656,265"/>
+<area shape="rect" title=" " alt="" coords="612,167,673,192"/>
+<area shape="rect" href="type__traits_8hpp.html" title=" " alt="" coords="697,167,804,192"/>
+<area shape="rect" title=" " alt="" coords="719,240,782,265"/>
 </map>
 </div>
 </div>
@@ -147,14 +156,14 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab48b3432f6b25c66c5669c3b5cdb6114"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ab48b3432f6b25c66c5669c3b5cdb6114"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#ab48b3432f6b25c66c5669c3b5cdb6114">bricks::to_string</a> (const T &amp;value, std::string &amp;str) noexcept -&gt; bool</td></tr>
-<tr class="memdesc:ab48b3432f6b25c66c5669c3b5cdb6114"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exceptionlessly convert a number to a string.  <a href="namespacebricks.html#ab48b3432f6b25c66c5669c3b5cdb6114">More...</a><br /></td></tr>
-<tr class="separator:ab48b3432f6b25c66c5669c3b5cdb6114"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a579b90b8768aaa590ffeb462ac0d5535"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a579b90b8768aaa590ffeb462ac0d5535"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a579b90b8768aaa590ffeb462ac0d5535">bricks::from_string</a> (const std::string_view &amp;str, T &amp;value) noexcept -&gt; bool</td></tr>
-<tr class="memdesc:a579b90b8768aaa590ffeb462ac0d5535"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exceptionlessly convert a string to a number.  <a href="namespacebricks.html#a579b90b8768aaa590ffeb462ac0d5535">More...</a><br /></td></tr>
-<tr class="separator:a579b90b8768aaa590ffeb462ac0d5535"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a160a4be43d95d684366925d6028a406b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a160a4be43d95d684366925d6028a406b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a160a4be43d95d684366925d6028a406b">bricks::to_string</a> (const T &amp;value, std::size_t buffer_size=(std::numeric_limits&lt; T &gt;::digits10+2)) noexcept -&gt; result&lt; std::string, std::errc &gt;</td></tr>
+<tr class="memdesc:a160a4be43d95d684366925d6028a406b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exceptionlessly convert a number to a string.  <a href="namespacebricks.html#a160a4be43d95d684366925d6028a406b">More...</a><br /></td></tr>
+<tr class="separator:a160a4be43d95d684366925d6028a406b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a006beff646c0efb0edfea15c733b224b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a006beff646c0efb0edfea15c733b224b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a006beff646c0efb0edfea15c733b224b">bricks::from_string</a> (const std::string_view &amp;str) noexcept -&gt; result&lt; T, std::errc &gt;</td></tr>
+<tr class="memdesc:a006beff646c0efb0edfea15c733b224b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exceptionlessly convert a string to a number.  <a href="namespacebricks.html#a006beff646c0efb0edfea15c733b224b">More...</a><br /></td></tr>
+<tr class="separator:a006beff646c0efb0edfea15c733b224b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
