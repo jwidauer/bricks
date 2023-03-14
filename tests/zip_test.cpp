@@ -1,6 +1,6 @@
 #include <doctest/doctest.h>
 
-#include <bricks/zip.hpp>
+#include <bricks/ranges.hpp>
 #include <numeric>
 #include <vector>
 
