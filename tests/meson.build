@@ -6,6 +6,7 @@ sources = [
     'charconv_test.cpp',
     'contains_test.cpp',
     'enumerate_test.cpp',
+    'filter_test.cpp',
     'index_of_test.cpp',
     'main.cpp',
     'mutex_test.cpp',
