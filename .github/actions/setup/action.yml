@@ -4,15 +4,9 @@ runs:
   using: "composite"
   steps:
     - name: Install conan, meson, ninja and gcovr
-      run: pip install conan==1.59.0 meson ninja gcovr
+      run: pip install conan meson ninja gcovr
       shell: bash
 
     - name: Create default profile
-      run: conan profile new default --detect
-      shell: bash
-
-    - name: Update profile
-      run: |
-        conan profile update settings.compiler.libcxx=libstdc++11 default
-        conan profile update settings.compiler.cppstd=17 default
+      run: conan profile detect
       shell: bash

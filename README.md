@@ -10,10 +10,9 @@ We use [Conan](https://conan.io/), [Meson](https://mesonbuild.com/), [Ninja](htt
 To install them, run:
 
 ```bash
-pip install conan==1.59.0 meson ninja pre-commit
+pip install conan meson ninja pre-commit
 npm install --save-dev @commitlint/{config-conventional,cli}
-conan profile new default --detect
-conan profile update settings.compiler.libcxx=libstdc++11 default
+conan profile detect
 ```
 
 ## Building
@@ -21,6 +20,5 @@ conan profile update settings.compiler.libcxx=libstdc++11 default
 Then, to install the dependencies and compile the project, run:
 
 ```bash
-conan install . -if build --build=missing
-conan build . -bf build
+conan build .
 ```

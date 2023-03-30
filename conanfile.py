@@ -1,3 +1,4 @@
+import os
 from conan import ConanFile, __version__ as conan_version
 from conan.tools.cmake import cmake_layout
 from conan.tools.meson import MesonToolchain, Meson
@@ -23,18 +24,18 @@ class BricksConan(ConanFile):
     exports_sources = "include/*", "tests/*"
     no_copy_source = True
     generators = "PkgConfigDeps", "VirtualBuildEnv"
-    requires = "doctest/2.4.9"
+    requires = "doctest/2.4.10"
 
     def set_version(self):
         if conan_version >= Version("2.0.0"):
-            self.version = load(self, "version.txt")
+            self.version = load(self, "version.txt").rstrip()
 
     def validate(self):
         check_min_cppstd(self, 17)
 
-    # def layout(self):
-    #     if conan_version >= Version("2.0.0"):
-    #         cmake_layout(self)
+    def layout(self):
+        if conan_version >= Version("2.0.0"):
+            cmake_layout(self)
 
     def generate(self):
         tc = MesonToolchain(self)
@@ -42,10 +43,15 @@ class BricksConan(ConanFile):
         tc.generate()
 
     def build(self):
-        if not self.conf.get("tools.build:skip_test", default=False):
-            meson = Meson(self)
-            meson.configure()
-            meson.build()
+        if self.conf.get("tools.build:skip_test", default=False):
+            return
+
+        meson = Meson(self)
+        meson.configure()
+        if os.getenv("CONFIGURE_ONLY"):
+            return
+
+        meson.build()
 
     def package(self):
         meson = Meson(self)

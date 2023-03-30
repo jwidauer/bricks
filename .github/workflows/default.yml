@@ -17,9 +17,7 @@ jobs:
         run: sudo apt install cppcheck
 
       - name: Generate compilation database
-        run: |
-          conan install -if build .
-          conan build -c -bf build .
+        run: CONFIGURE_ONLY=1 conan build -s build_type=Debug .
 
       - uses: pre-commit/action@v3.0.0
 
@@ -33,9 +31,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Build
-        run: |
-          conan install -if build --build missing .
-          conan build -bf build .
+        run: conan build .
 
   test:
     runs-on: ubuntu-22.04
@@ -53,13 +49,13 @@ jobs:
         uses: jwidauer/setup-sonar-scanner@v3
 
       - name: Build with build-wrapper
-        run: |
-          conan install -if build --build missing -o bricks:build_coverage=True -s build_type=Debug .
-          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} conan build -bf build .
+        env:
+          BUILD_WRAPPER_CMD: build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }}
+        run: ${{ env.BUILD_WRAPPER_CMD }} conan build -o bricks/*:build_coverage=True -s build_type=Debug .
 
       - name: Run tests and generate coverage
         run: |
-          cd build
+          cd build/Debug
           ninja test
           ninja coverage
 
@@ -71,13 +67,13 @@ jobs:
           sonar-scanner \
             --define sonar.host.url="${{ steps.setup-sonar-scanner.outputs.sonar-server-url }}" \
             --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}" \
-            --define sonar.coverageReportPaths=build/meson-logs/sonarqube.xml
+            --define sonar.coverageReportPaths=build/Debug/meson-logs/sonarqube.xml
 
       - name: Upload coverage as artifact
         uses: actions/upload-artifact@v3
         with:
           name: coverage
-          path: build/meson-logs/
+          path: build/Debug/meson-logs/
 
   docs:
     runs-on: ubuntu-22.04
