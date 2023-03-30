@@ -121,15 +121,13 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <h1><a class="anchor" id="autotoc_md1"></a>
 Installation</h1>
 <p >We use <a href="https://conan.io/">Conan</a>, <a href="https://mesonbuild.com/">Meson</a>, <a href="https://ninja-build.org/">Ninja</a>, <a href="https://pre-commit.com/">pre-commit</a>, and <a href="https://commitlint.js.org/#/">commitlint</a> for tooling. To install them, run:</p>
-<div class="fragment"><div class="line">pip install conan==1.59.0 meson ninja pre-commit</div>
+<div class="fragment"><div class="line">pip install conan meson ninja pre-commit</div>
 <div class="line">npm install --save-dev @commitlint/{config-conventional,cli}</div>
-<div class="line">conan profile new default --detect</div>
-<div class="line">conan profile update settings.compiler.libcxx=libstdc++11 default</div>
+<div class="line">conan profile detect</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
 Building</h1>
 <p >Then, to install the dependencies and compile the project, run:</p>
-<div class="fragment"><div class="line">conan install . -if build --build=missing</div>
-<div class="line">conan build . -bf build</div>
+<div class="fragment"><div class="line">conan build .</div>
 </div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
