@@ -41,13 +41,8 @@ jobs:
     - name: Install conan, meson, ninja and gcovr
       uses: ./.github/actions/setup
 
-    - name: Install dependencies
-      run: |
-        conan install -if build --build missing .
-
     - name: Build
-      run: |
-        conan build -bf build .
+      run: conan build .
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2

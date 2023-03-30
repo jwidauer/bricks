@@ -15,7 +15,7 @@ repos:
     rev: 'v1.3.5'
     hooks:
       - id: clang-tidy
-        args: [-p=build]
+        args: [-p=build/Debug]
       - id: cppcheck
         args: [--inline-suppr]
   - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
