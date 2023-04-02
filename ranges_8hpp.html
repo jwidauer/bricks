@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <meta name="generator" content="Doxygen 1.9.5" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BRICKS: /github/workspace/include/bricks/detail/reverse.hpp File Reference</title>
+    <title>BRICKS: /github/workspace/include/bricks/ranges.hpp File Reference</title>
     <link href="tabs.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="dynsections.js"></script>
@@ -87,7 +87,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('reverse_8hpp.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('ranges_8hpp.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -114,43 +114,65 @@ $(document).ready(function(){initNavTree('reverse_8hpp.html',''); initResizable(
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
-  <div class="headertitle"><div class="title">reverse.hpp File Reference</div></div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">ranges.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iterator&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="enumerate_8hpp_source.html">detail/enumerate.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="filter_8hpp_source.html">detail/filter.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="reverse_8hpp_source.html">detail/reverse.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="zip_8hpp_source.html">detail/zip.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for reverse.hpp:</div>
+Include dependency graph for ranges.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="reverse_8hpp__incl.png" border="0" usemap="#a_2github_2workspace_2include_2bricks_2detail_2reverse_8hpp" alt=""/></div>
-<map name="a_2github_2workspace_2include_2bricks_2detail_2reverse_8hpp" id="a_2github_2workspace_2include_2bricks_2detail_2reverse_8hpp">
-<area shape="rect" title=" " alt="" coords="5,5,179,45"/>
-<area shape="rect" title=" " alt="" coords="61,93,123,119"/>
+<div class="center"><img src="ranges_8hpp__incl.png" border="0" usemap="#a_2github_2workspace_2include_2bricks_2ranges_8hpp" alt=""/></div>
+<map name="a_2github_2workspace_2include_2bricks_2ranges_8hpp" id="a_2github_2workspace_2include_2bricks_2ranges_8hpp">
+<area shape="rect" title=" " alt="" coords="207,5,381,45"/>
+<area shape="rect" href="enumerate_8hpp.html" title=" " alt="" coords="5,93,148,119"/>
+<area shape="rect" href="filter_8hpp.html" title=" " alt="" coords="172,93,277,119"/>
+<area shape="rect" href="reverse_8hpp.html" title=" " alt="" coords="301,93,425,119"/>
+<area shape="rect" href="zip_8hpp.html" title=" " alt="" coords="449,93,547,119"/>
+<area shape="rect" title=" " alt="" coords="245,167,308,192"/>
+<area shape="rect" title=" " alt="" coords="337,167,403,192"/>
+<area shape="rect" title=" " alt="" coords="427,167,478,192"/>
+<area shape="rect" title=" " alt="" coords="502,167,585,192"/>
+<area shape="rect" title=" " alt="" coords="609,167,667,192"/>
 </map>
 </div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="reverse_8hpp__dep__incl.png" border="0" usemap="#a_2github_2workspace_2include_2bricks_2detail_2reverse_8hppdep" alt=""/></div>
-<map name="a_2github_2workspace_2include_2bricks_2detail_2reverse_8hppdep" id="a_2github_2workspace_2include_2bricks_2detail_2reverse_8hppdep">
-<area shape="rect" title=" " alt="" coords="5,5,179,45"/>
-<area shape="rect" href="ranges_8hpp.html" title=" " alt="" coords="5,93,179,133"/>
-</map>
 </div>
-</div>
-<p><a href="reverse_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="ranges_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacebricks"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebricks.html">bricks</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ab3ae00555224508fa002c2d40d0c83b0"><td class="memTemplParams" colspan="2">template&lt;typename Range &gt; </td></tr>
+<tr class="memitem:ab3ae00555224508fa002c2d40d0c83b0"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#ab3ae00555224508fa002c2d40d0c83b0">bricks::enumerate</a> (Range &amp;range)</td></tr>
+<tr class="memdesc:ab3ae00555224508fa002c2d40d0c83b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerate a range.  <a href="namespacebricks.html#ab3ae00555224508fa002c2d40d0c83b0">More...</a><br /></td></tr>
+<tr class="separator:ab3ae00555224508fa002c2d40d0c83b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a194c2c26258519b6b094c6911cbbae6e"><td class="memTemplParams" colspan="2">template&lt;typename Range , typename UnaryPredicate &gt; </td></tr>
+<tr class="memitem:a194c2c26258519b6b094c6911cbbae6e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a194c2c26258519b6b094c6911cbbae6e">bricks::filter</a> (Range &amp;range, UnaryPredicate predicate) -&gt; detail::filterer&lt; Range, UnaryPredicate &gt;</td></tr>
+<tr class="memdesc:a194c2c26258519b6b094c6911cbbae6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter a range.  <a href="namespacebricks.html#a194c2c26258519b6b094c6911cbbae6e">More...</a><br /></td></tr>
+<tr class="separator:a194c2c26258519b6b094c6911cbbae6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a437b5370782493b27a27d8882521d96e"><td class="memTemplParams" colspan="2">template&lt;typename Range &gt; </td></tr>
+<tr class="memitem:a437b5370782493b27a27d8882521d96e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a437b5370782493b27a27d8882521d96e">bricks::reverse</a> (Range &amp;range)</td></tr>
+<tr class="memdesc:a437b5370782493b27a27d8882521d96e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a reverse iterator from a range.  <a href="namespacebricks.html#a437b5370782493b27a27d8882521d96e">More...</a><br /></td></tr>
+<tr class="separator:a437b5370782493b27a27d8882521d96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a464e63cab89ecd30b76fb2f3ed206f00"><td class="memTemplParams" colspan="2">template&lt;typename... Ranges&gt; </td></tr>
+<tr class="memitem:a464e63cab89ecd30b76fb2f3ed206f00"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a464e63cab89ecd30b76fb2f3ed206f00">bricks::zip</a> (Ranges &amp;&amp;... t)</td></tr>
+<tr class="memdesc:a464e63cab89ecd30b76fb2f3ed206f00"><td class="mdescLeft">&#160;</td><td class="mdescRight">A zip iterator adapter.  <a href="namespacebricks.html#a464e63cab89ecd30b76fb2f3ed206f00">More...</a><br /></td></tr>
+<tr class="separator:a464e63cab89ecd30b76fb2f3ed206f00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_7907dc6ee7242cfcf04f96d5d2764e7d.html">bricks</a></li><li class="navelem"><a class="el" href="dir_81e9233d0654993de1007154ba839579.html">detail</a></li><li class="navelem"><a class="el" href="reverse_8hpp.html">reverse.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_7907dc6ee7242cfcf04f96d5d2764e7d.html">bricks</a></li><li class="navelem"><a class="el" href="ranges_8hpp.html">ranges.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

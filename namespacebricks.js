@@ -13,7 +13,7 @@ var namespacebricks =
     [ "contains", "namespacebricks.html#a2b10cd3eefc9387e44407e45c0cfc9c2", null ],
     [ "contains_if", "namespacebricks.html#af648dddfb613afc30701c8df34f0bb19", null ],
     [ "enumerate", "namespacebricks.html#ab3ae00555224508fa002c2d40d0c83b0", null ],
-    [ "filter", "namespacebricks.html#a36ed2e34e70f88bd62f952a412b852fd", null ],
+    [ "filter", "namespacebricks.html#a194c2c26258519b6b094c6911cbbae6e", null ],
     [ "from_string", "namespacebricks.html#a006beff646c0efb0edfea15c733b224b", null ],
     [ "index_of", "namespacebricks.html#a5f82ab9b5978f3b76b4de90de73a951d", null ],
     [ "index_of_if", "namespacebricks.html#a0ad262015be72bc9400dd9332ddc3b03", null ],

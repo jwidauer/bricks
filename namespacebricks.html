@@ -169,10 +169,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a6ad8c274821ef9eaf034b382a7dfadaf"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a6ad8c274821ef9eaf034b382a7dfadaf">bind_front</a> (F &amp;&amp;f, FrontArgs &amp;&amp;... front_args)</td></tr>
 <tr class="memdesc:a6ad8c274821ef9eaf034b382a7dfadaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind arguments to the front of a function.  <a href="namespacebricks.html#a6ad8c274821ef9eaf034b382a7dfadaf">More...</a><br /></td></tr>
 <tr class="separator:a6ad8c274821ef9eaf034b382a7dfadaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36ed2e34e70f88bd62f952a412b852fd"><td class="memTemplParams" colspan="2">template&lt;class Container , class UnaryPredicate &gt; </td></tr>
-<tr class="memitem:a36ed2e34e70f88bd62f952a412b852fd"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a36ed2e34e70f88bd62f952a412b852fd">filter</a> (const Container &amp;container, const UnaryPredicate &amp;predicate) -&gt; Container</td></tr>
-<tr class="memdesc:a36ed2e34e70f88bd62f952a412b852fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter a container using a predicate.  <a href="namespacebricks.html#a36ed2e34e70f88bd62f952a412b852fd">More...</a><br /></td></tr>
-<tr class="separator:a36ed2e34e70f88bd62f952a412b852fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b10cd3eefc9387e44407e45c0cfc9c2"><td class="memTemplParams" colspan="2">template&lt;class Container , class Value &gt; </td></tr>
 <tr class="memitem:a2b10cd3eefc9387e44407e45c0cfc9c2"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a2b10cd3eefc9387e44407e45c0cfc9c2">contains</a> (const Container &amp;container, const Value &amp;value) noexcept -&gt; bool</td></tr>
 <tr class="memdesc:a2b10cd3eefc9387e44407e45c0cfc9c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether a container contains a specific value.  <a href="namespacebricks.html#a2b10cd3eefc9387e44407e45c0cfc9c2">More...</a><br /></td></tr>
@@ -209,6 +205,10 @@ Functions</h2></td></tr>
 <tr class="memitem:ab3ae00555224508fa002c2d40d0c83b0"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#ab3ae00555224508fa002c2d40d0c83b0">enumerate</a> (Range &amp;range)</td></tr>
 <tr class="memdesc:ab3ae00555224508fa002c2d40d0c83b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerate a range.  <a href="namespacebricks.html#ab3ae00555224508fa002c2d40d0c83b0">More...</a><br /></td></tr>
 <tr class="separator:ab3ae00555224508fa002c2d40d0c83b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a194c2c26258519b6b094c6911cbbae6e"><td class="memTemplParams" colspan="2">template&lt;typename Range , typename UnaryPredicate &gt; </td></tr>
+<tr class="memitem:a194c2c26258519b6b094c6911cbbae6e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a194c2c26258519b6b094c6911cbbae6e">filter</a> (Range &amp;range, UnaryPredicate predicate) -&gt; detail::filterer&lt; Range, UnaryPredicate &gt;</td></tr>
+<tr class="memdesc:a194c2c26258519b6b094c6911cbbae6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter a range.  <a href="namespacebricks.html#a194c2c26258519b6b094c6911cbbae6e">More...</a><br /></td></tr>
+<tr class="separator:a194c2c26258519b6b094c6911cbbae6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a437b5370782493b27a27d8882521d96e"><td class="memTemplParams" colspan="2">template&lt;typename Range &gt; </td></tr>
 <tr class="memitem:a437b5370782493b27a27d8882521d96e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a437b5370782493b27a27d8882521d96e">reverse</a> (Range &amp;range)</td></tr>
 <tr class="memdesc:a437b5370782493b27a27d8882521d96e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a reverse iterator from a range.  <a href="namespacebricks.html#a437b5370782493b27a27d8882521d96e">More...</a><br /></td></tr>
@@ -357,7 +357,7 @@ template&lt;class Container , class Value &gt; </div>
 <p >Example: </p><div class="fragment"><div class="line">    std::vector&lt;int&gt; vec = {1, 2, 3, 4, 5};</div>
 <div class="line">    INFO(<a class="code hl_function" href="namespacebricks.html#a2b10cd3eefc9387e44407e45c0cfc9c2">bricks::contains</a>(vec, 3));  <span class="comment">// prints true</span></div>
 <div class="line">    INFO(<a class="code hl_function" href="namespacebricks.html#a2b10cd3eefc9387e44407e45c0cfc9c2">bricks::contains</a>(vec, 6));  <span class="comment">// prints false</span></div>
-<div class="ttc" id="anamespacebricks_html_a2b10cd3eefc9387e44407e45c0cfc9c2"><div class="ttname"><a href="namespacebricks.html#a2b10cd3eefc9387e44407e45c0cfc9c2">bricks::contains</a></div><div class="ttdeci">constexpr auto contains(const Container &amp;container, const Value &amp;value) noexcept -&gt; bool</div><div class="ttdoc">Checks whether a container contains a specific value.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:117</div></div>
+<div class="ttc" id="anamespacebricks_html_a2b10cd3eefc9387e44407e45c0cfc9c2"><div class="ttname"><a href="namespacebricks.html#a2b10cd3eefc9387e44407e45c0cfc9c2">bricks::contains</a></div><div class="ttdeci">constexpr auto contains(const Container &amp;container, const Value &amp;value) noexcept -&gt; bool</div><div class="ttdoc">Checks whether a container contains a specific value.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:95</div></div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Container</td><td>The type of the container. </td></tr>
@@ -416,7 +416,7 @@ template&lt;class Container , class UnaryPredicate &gt; </div>
 <p>Checks if a container contains a value that satisfies a predicate. </p>
 <p >Example: </p><div class="fragment"><div class="line">    std::vector&lt;int&gt; vec = {1, 2, 3, 4, 5};</div>
 <div class="line">    INFO(<a class="code hl_function" href="namespacebricks.html#af648dddfb613afc30701c8df34f0bb19">bricks::contains_if</a>(vec, [](<span class="keywordtype">int</span> i) { <span class="keywordflow">return</span> i % 2 == 0; }));  <span class="comment">// prints true</span></div>
-<div class="ttc" id="anamespacebricks_html_af648dddfb613afc30701c8df34f0bb19"><div class="ttname"><a href="namespacebricks.html#af648dddfb613afc30701c8df34f0bb19">bricks::contains_if</a></div><div class="ttdeci">constexpr auto contains_if(const Container &amp;container, const UnaryPredicate &amp;predicate) -&gt; bool</div><div class="ttdoc">Checks if a container contains a value that satisfies a predicate.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:135</div></div>
+<div class="ttc" id="anamespacebricks_html_af648dddfb613afc30701c8df34f0bb19"><div class="ttname"><a href="namespacebricks.html#af648dddfb613afc30701c8df34f0bb19">bricks::contains_if</a></div><div class="ttdeci">constexpr auto contains_if(const Container &amp;container, const UnaryPredicate &amp;predicate) -&gt; bool</div><div class="ttdoc">Checks if a container contains a value that satisfies a predicate.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:113</div></div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Container</td><td>The type of the container. </td></tr>
@@ -454,14 +454,14 @@ template&lt;typename Range &gt; </div>
 </div><div class="memdoc">
 
 <p>Enumerate a range. </p>
-<p >This function creates an enumerator from a range. The range can be any type that has a begin and end function. The enumerator can be used in a range-based for loop. Each element in the enumerator is a pair of the index and the value.</p>
+<p >This function creates an iterator adapter that enumerates the values of a range. The range can be any type that has a begin and end function. Each element in the enumerator is a pair of the index and the value.</p>
 <p >Example: </p><div class="fragment"><div class="line">  std::vector&lt;int&gt; v{1, 2, 3, 4, 5};</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span> [i, e] : <a class="code hl_function" href="namespacebricks.html#ab3ae00555224508fa002c2d40d0c83b0">bricks::enumerate</a>(v)) {</div>
 <div class="line">    <span class="keyword">auto</span> idx = i;</div>
 <div class="line">    <span class="keyword">auto</span> elem = e;</div>
 <div class="line">    INFO(idx, <span class="stringliteral">&quot;: &quot;</span>, elem);  <span class="comment">// prints 0: 1, 1: 2, 2: 3, 3: 4, 4: 5</span></div>
 <div class="line">  }</div>
-<div class="ttc" id="anamespacebricks_html_ab3ae00555224508fa002c2d40d0c83b0"><div class="ttname"><a href="namespacebricks.html#ab3ae00555224508fa002c2d40d0c83b0">bricks::enumerate</a></div><div class="ttdeci">auto enumerate(Range &amp;range)</div><div class="ttdoc">Enumerate a range.</div><div class="ttdef"><b>Definition:</b> enumerate.hpp:24</div></div>
+<div class="ttc" id="anamespacebricks_html_ab3ae00555224508fa002c2d40d0c83b0"><div class="ttname"><a href="namespacebricks.html#ab3ae00555224508fa002c2d40d0c83b0">bricks::enumerate</a></div><div class="ttdeci">auto enumerate(Range &amp;range)</div><div class="ttdoc">Enumerate a range.</div><div class="ttdef"><b>Definition:</b> ranges.hpp:25</div></div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Range</td><td>The type of range to enumerate. </td></tr>
@@ -478,58 +478,53 @@ template&lt;typename Range &gt; </div>
 
 </div>
 </div>
-<a id="a36ed2e34e70f88bd62f952a412b852fd" name="a36ed2e34e70f88bd62f952a412b852fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36ed2e34e70f88bd62f952a412b852fd">&#9670;&#160;</a></span>filter()</h2>
+<a id="a194c2c26258519b6b094c6911cbbae6e" name="a194c2c26258519b6b094c6911cbbae6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a194c2c26258519b6b094c6911cbbae6e">&#9670;&#160;</a></span>filter()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Container , class UnaryPredicate &gt; </div>
+template&lt;typename Range , typename UnaryPredicate &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">auto bricks::filter </td>
           <td>(</td>
-          <td class="paramtype">const Container &amp;&#160;</td>
-          <td class="paramname"><em>container</em>, </td>
+          <td class="paramtype">Range &amp;&#160;</td>
+          <td class="paramname"><em>range</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const UnaryPredicate &amp;&#160;</td>
+          <td class="paramtype">UnaryPredicate&#160;</td>
           <td class="paramname"><em>predicate</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> -&gt; Container
+          <td></td><td> -&gt; detail::filterer&lt;Range, UnaryPredicate&gt;
 </td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Filter a container using a predicate. </p>
-<p >Creates a new container of type <code>Container</code>, with the elements that satisfy the predicate.</p>
-<p >Example: </p><div class="fragment"><div class="line">    std::vector&lt;int&gt; vec = {1, 2, 3, 4, 5};</div>
-<div class="line">    <span class="keyword">auto</span> filtered = <a class="code hl_function" href="namespacebricks.html#a36ed2e34e70f88bd62f952a412b852fd">bricks::filter</a>(vec, [](<span class="keywordtype">int</span> i) { <span class="keywordflow">return</span> i % 2 == 0; });</div>
-<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i : filtered) {</div>
-<div class="line">      INFO(i);  <span class="comment">// prints 2, 4</span></div>
-<div class="line">    }</div>
-<div class="ttc" id="anamespacebricks_html_a36ed2e34e70f88bd62f952a412b852fd"><div class="ttname"><a href="namespacebricks.html#a36ed2e34e70f88bd62f952a412b852fd">bricks::filter</a></div><div class="ttdeci">auto filter(const Container &amp;container, const UnaryPredicate &amp;predicate) -&gt; Container</div><div class="ttdoc">Filter a container using a predicate.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:91</div></div>
-</div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Container</td><td>The type of the container. </td></tr>
-    <tr><td class="paramname">UnaryPredicate</td><td>The type of the predicate. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Filter a range. </p>
+<p >This function creates an iterator adapter that filters the values of a range. The range can be any type that has a begin and end function. Each element in the iterator adapter is a value that satisfies the predicate.</p>
+<p >Example: </p><div class="fragment"><div class="line">  std::vector&lt;int&gt; v{1, 2, 3, 4, 5};</div>
+<div class="line">  <span class="keyword">auto</span> filtered = <a class="code hl_function" href="namespacebricks.html#a194c2c26258519b6b094c6911cbbae6e">bricks::filter</a>(v, [](<span class="keywordtype">int</span> i) { <span class="keywordflow">return</span> i % 2 == 0; });</div>
+<div class="line">  <span class="keywordtype">int</span> expected = 2;</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span> i : filtered) {</div>
+<div class="line">    CHECK(i == expected);</div>
+<div class="line">    expected += 2;</div>
+<div class="line">  }</div>
+<div class="ttc" id="anamespacebricks_html_a194c2c26258519b6b094c6911cbbae6e"><div class="ttname"><a href="namespacebricks.html#a194c2c26258519b6b094c6911cbbae6e">bricks::filter</a></div><div class="ttdeci">auto filter(Range &amp;range, UnaryPredicate predicate) -&gt; detail::filterer&lt; Range, UnaryPredicate &gt;</div><div class="ttdoc">Filter a range.</div><div class="ttdef"><b>Definition:</b> ranges.hpp:45</div></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">container</td><td>The container. </td></tr>
-    <tr><td class="paramname">predicate</td><td>The predicate. </td></tr>
+    <tr><td class="paramname">range</td><td>The range to filter. </td></tr>
+    <tr><td class="paramname">predicate</td><td>The predicate to filter with. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Container The filtered container. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>auto The iterator adapter. </dd></dl>
 
 </div>
 </div>
@@ -622,7 +617,7 @@ template&lt;class Container , class Value &gt; </div>
 <p >If the container has a <code>find</code> method, it will be used to get the index of the value. Otherwise, the container will be searched using <code>std::find</code>. If <code>std::find</code> is used, the container must have a <code>begin</code> and <code>end</code> method. If the container has a <code>find</code> method, the container must have a <code>key_type</code> type alias. If <code>std::find</code> throws an exception, <code>std::terminate</code> will be called.</p>
 <p >Example: </p><div class="fragment"><div class="line">    std::vector&lt;int&gt; vec = {1, 2, 3, 4, 5};</div>
 <div class="line">    INFO(<a class="code hl_function" href="namespacebricks.html#a5f82ab9b5978f3b76b4de90de73a951d">bricks::index_of</a>(vec, 3));  <span class="comment">// prints 2</span></div>
-<div class="ttc" id="anamespacebricks_html_a5f82ab9b5978f3b76b4de90de73a951d"><div class="ttname"><a href="namespacebricks.html#a5f82ab9b5978f3b76b4de90de73a951d">bricks::index_of</a></div><div class="ttdeci">constexpr auto index_of(const Container &amp;container, const Value &amp;value) noexcept -&gt; std::optional&lt; size_t &gt;</div><div class="ttdoc">Get the index of the first occurence of a value in a container.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:158</div></div>
+<div class="ttc" id="anamespacebricks_html_a5f82ab9b5978f3b76b4de90de73a951d"><div class="ttname"><a href="namespacebricks.html#a5f82ab9b5978f3b76b4de90de73a951d">bricks::index_of</a></div><div class="ttdeci">constexpr auto index_of(const Container &amp;container, const Value &amp;value) noexcept -&gt; std::optional&lt; size_t &gt;</div><div class="ttdoc">Get the index of the first occurence of a value in a container.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:136</div></div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Container</td><td>The type of the container. </td></tr>
@@ -681,7 +676,7 @@ template&lt;class Container , class UnaryPredicate &gt; </div>
 <p>Get the index of the first element in a container for which a predicate is true. </p>
 <p >Example: </p><div class="fragment"><div class="line">    std::vector&lt;int&gt; vec = {1, 2, 3, 4, 5};</div>
 <div class="line">    INFO(<a class="code hl_function" href="namespacebricks.html#a0ad262015be72bc9400dd9332ddc3b03">bricks::index_of_if</a>(vec, [](<span class="keywordtype">int</span> i) { <span class="keywordflow">return</span> i % 2 == 0; }));  <span class="comment">// prints 1</span></div>
-<div class="ttc" id="anamespacebricks_html_a0ad262015be72bc9400dd9332ddc3b03"><div class="ttname"><a href="namespacebricks.html#a0ad262015be72bc9400dd9332ddc3b03">bricks::index_of_if</a></div><div class="ttdeci">constexpr auto index_of_if(const Container &amp;container, const UnaryPredicate &amp;predicate) -&gt; std::optional&lt; size_t &gt;</div><div class="ttdoc">Get the index of the first element in a container for which a predicate is true.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:177</div></div>
+<div class="ttc" id="anamespacebricks_html_a0ad262015be72bc9400dd9332ddc3b03"><div class="ttname"><a href="namespacebricks.html#a0ad262015be72bc9400dd9332ddc3b03">bricks::index_of_if</a></div><div class="ttdeci">constexpr auto index_of_if(const Container &amp;container, const UnaryPredicate &amp;predicate) -&gt; std::optional&lt; size_t &gt;</div><div class="ttdoc">Get the index of the first element in a container for which a predicate is true.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:155</div></div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Container</td><td>The type of the container. </td></tr>
@@ -746,7 +741,7 @@ template&lt;class T , class Rep , class Period &gt; </div>
 <div class="line">    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespacebricks.html#afec1449ef3e22e63547887744c4111a9">bricks::is_ready_after</a>(future, std::chrono::seconds(10))) {</div>
 <div class="line">      INFO(<span class="stringliteral">&quot;Future is ready!&quot;</span>);</div>
 <div class="line">    }</div>
-<div class="ttc" id="anamespacebricks_html_afec1449ef3e22e63547887744c4111a9"><div class="ttname"><a href="namespacebricks.html#afec1449ef3e22e63547887744c4111a9">bricks::is_ready_after</a></div><div class="ttdeci">auto is_ready_after(const std::future&lt; T &gt; &amp;future, const std::chrono::duration&lt; Rep, Period &gt; &amp;timeout) noexcept -&gt; bool</div><div class="ttdoc">Check whether a future is ready after a timeout.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:197</div></div>
+<div class="ttc" id="anamespacebricks_html_afec1449ef3e22e63547887744c4111a9"><div class="ttname"><a href="namespacebricks.html#afec1449ef3e22e63547887744c4111a9">bricks::is_ready_after</a></div><div class="ttdeci">auto is_ready_after(const std::future&lt; T &gt; &amp;future, const std::chrono::duration&lt; Rep, Period &gt; &amp;timeout) noexcept -&gt; bool</div><div class="ttdoc">Check whether a future is ready after a timeout.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:175</div></div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>The type of the future. </td></tr>
@@ -810,7 +805,7 @@ template&lt;class T , class Clock , class Duration &gt; </div>
 <div class="line">    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespacebricks.html#a81e2fa4c1a3e3459b3cea78f1d796564">bricks::is_ready_at</a>(future, std::chrono::steady_clock::now() + std::chrono::seconds(10))) {</div>
 <div class="line">      INFO(<span class="stringliteral">&quot;Future is ready!&quot;</span>);</div>
 <div class="line">    }</div>
-<div class="ttc" id="anamespacebricks_html_a81e2fa4c1a3e3459b3cea78f1d796564"><div class="ttname"><a href="namespacebricks.html#a81e2fa4c1a3e3459b3cea78f1d796564">bricks::is_ready_at</a></div><div class="ttdeci">auto is_ready_at(const std::future&lt; T &gt; &amp;future, const std::chrono::time_point&lt; Clock, Duration &gt; &amp;timeout) noexcept -&gt; bool</div><div class="ttdoc">Check whether a future is ready at a specific time.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:215</div></div>
+<div class="ttc" id="anamespacebricks_html_a81e2fa4c1a3e3459b3cea78f1d796564"><div class="ttname"><a href="namespacebricks.html#a81e2fa4c1a3e3459b3cea78f1d796564">bricks::is_ready_at</a></div><div class="ttdeci">auto is_ready_at(const std::future&lt; T &gt; &amp;future, const std::chrono::time_point&lt; Clock, Duration &gt; &amp;timeout) noexcept -&gt; bool</div><div class="ttdoc">Check whether a future is ready at a specific time.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:193</div></div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>The type of the future. </td></tr>
@@ -889,12 +884,12 @@ template&lt;typename Range &gt; </div>
 </div><div class="memdoc">
 
 <p>Create a reverse iterator from a range. </p>
-<p >This function creates a reverse iterator from a range. The range can be any type that has a rbegin and rend function. The reverse iterator can be used in a range-based for loop.</p>
+<p >This function creates a reverse iterator from a range. The range can be any type that has a rbegin and rend function.</p>
 <p >Example: </p><div class="fragment"><div class="line">  std::vector&lt;int&gt; v{1, 2, 3, 4, 5};</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span> e : <a class="code hl_function" href="namespacebricks.html#a437b5370782493b27a27d8882521d96e">bricks::reverse</a>(v)) {</div>
 <div class="line">    INFO(e);  <span class="comment">// prints 5, 4, 3, 2, 1</span></div>
 <div class="line">  }</div>
-<div class="ttc" id="anamespacebricks_html_a437b5370782493b27a27d8882521d96e"><div class="ttname"><a href="namespacebricks.html#a437b5370782493b27a27d8882521d96e">bricks::reverse</a></div><div class="ttdeci">auto reverse(Range &amp;range)</div><div class="ttdoc">Create a reverse iterator from a range.</div><div class="ttdef"><b>Definition:</b> reverse.hpp:22</div></div>
+<div class="ttc" id="anamespacebricks_html_a437b5370782493b27a27d8882521d96e"><div class="ttname"><a href="namespacebricks.html#a437b5370782493b27a27d8882521d96e">bricks::reverse</a></div><div class="ttdeci">auto reverse(Range &amp;range)</div><div class="ttdoc">Create a reverse iterator from a range.</div><div class="ttdef"><b>Definition:</b> ranges.hpp:64</div></div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Range</td><td>The type of range to reverse. </td></tr>
@@ -1039,7 +1034,7 @@ template&lt;typename... Ranges&gt; </div>
 <div class="line">    <span class="keyword">auto</span> sum = x + y;</div>
 <div class="line">    INFO(sum);  <span class="comment">// prints 5, 7, 9</span></div>
 <div class="line">  }</div>
-<div class="ttc" id="anamespacebricks_html_a464e63cab89ecd30b76fb2f3ed206f00"><div class="ttname"><a href="namespacebricks.html#a464e63cab89ecd30b76fb2f3ed206f00">bricks::zip</a></div><div class="ttdeci">auto zip(Ranges &amp;&amp;... t)</div><div class="ttdoc">A zip iterator adapter.</div><div class="ttdef"><b>Definition:</b> zip.hpp:19</div></div>
+<div class="ttc" id="anamespacebricks_html_a464e63cab89ecd30b76fb2f3ed206f00"><div class="ttname"><a href="namespacebricks.html#a464e63cab89ecd30b76fb2f3ed206f00">bricks::zip</a></div><div class="ttdeci">auto zip(Ranges &amp;&amp;... t)</div><div class="ttdoc">A zip iterator adapter.</div><div class="ttdef"><b>Definition:</b> ranges.hpp:81</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
