@@ -78,41 +78,6 @@ TEST_CASE("bind_front")
   }
 }
 
-TEST_CASE("filter")
-{
-  SUBCASE("simple")
-  {
-    const std::vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    auto is_even = [](int i) { return i % 2 == 0; };
-    const auto evens = bricks::filter(v, is_even);
-    REQUIRE(evens.size() == 5);
-    CHECK(evens[0] == 2);
-    CHECK(evens[1] == 4);
-    CHECK(evens[2] == 6);
-    CHECK(evens[3] == 8);
-    CHECK(evens[4] == 10);
-  }
-
-  SUBCASE("empty container")
-  {
-    const std::vector<int> v;
-    auto is_even = [](int i) { return i % 2 == 1; };
-    const auto evens = bricks::filter(v, is_even);
-    REQUIRE(evens.size() == 0);
-  }
-
-  SUBCASE("example")
-  {
-    /// [filter-example]
-    std::vector<int> vec = {1, 2, 3, 4, 5};
-    auto filtered = bricks::filter(vec, [](int i) { return i % 2 == 0; });
-    for (auto i : filtered) {
-      INFO(i);  // prints 2, 4
-    }
-    /// [filter-example]
-  }
-}
-
 TEST_CASE("is_ready_after")
 {
   std::promise<int> p;

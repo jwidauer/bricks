@@ -7,18 +7,19 @@ headers = [
     'bricks/algorithm.hpp',
     'bricks/charconv.hpp',
     'bricks/detail/contains.hpp',
+    'bricks/detail/enumerate.hpp',
+    'bricks/detail/filter.hpp',
     'bricks/detail/index_of.hpp',
     'bricks/detail/read_guard.hpp',
+    'bricks/detail/reverse.hpp',
     'bricks/detail/write_guard.hpp',
     'bricks/detail/zip.hpp',
-    'bricks/enumerate.hpp',
     'bricks/mutex.hpp',
+    'bricks/ranges.hpp',
     'bricks/result.hpp',
-    'bricks/reverse.hpp',
     'bricks/rw_lock.hpp',
     'bricks/timer.hpp',
     'bricks/type_traits.hpp',
-    'bricks/zip.hpp',
 ]
 
 install_headers(headers, preserve_path: true)
