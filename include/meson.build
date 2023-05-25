@@ -14,6 +14,7 @@ headers = [
     'bricks/detail/reverse.hpp',
     'bricks/detail/write_guard.hpp',
     'bricks/detail/zip.hpp',
+    'bricks/handle.hpp',
     'bricks/mutex.hpp',
     'bricks/ranges.hpp',
     'bricks/result.hpp',
