@@ -422,6 +422,7 @@ a.anchor {
 #projectbrief {
     font-family: inherit;
     font-size: 80%;
+    line-height: normal;
 }
 
 #projectlogo {
