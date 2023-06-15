@@ -35,6 +35,9 @@
 *.out
 *.app
 
+# .clangd file
+.clangd
+
 ### Meson ###
 # subproject directories
 /subprojects/*
