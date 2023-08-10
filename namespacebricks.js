@@ -1,6 +1,7 @@
 var namespacebricks =
 [
     [ "bad_result_access", "classbricks_1_1bad__result__access.html", null ],
+    [ "deleter", "structbricks_1_1deleter.html", "structbricks_1_1deleter" ],
     [ "has_find", "structbricks_1_1has__find.html", "structbricks_1_1has__find" ],
     [ "is_iterator", "structbricks_1_1is__iterator.html", null ],
     [ "mutex", "classbricks_1_1mutex.html", "classbricks_1_1mutex" ],
@@ -8,6 +9,7 @@ var namespacebricks =
     [ "rw_lock", "classbricks_1_1rw__lock.html", "classbricks_1_1rw__lock" ],
     [ "timer", "classbricks_1_1timer.html", "classbricks_1_1timer" ],
     [ "err", "namespacebricks.html#a56141134ef4783cc27e2f3e970dbedf5", null ],
+    [ "handle", "namespacebricks.html#a85f013a059376a35d5efe5b7d37d1720", null ],
     [ "ok", "namespacebricks.html#a19b2ba7d93c79fd196404d3fc50eac4f", null ],
     [ "bind_front", "namespacebricks.html#a6ad8c274821ef9eaf034b382a7dfadaf", null ],
     [ "contains", "namespacebricks.html#a2b10cd3eefc9387e44407e45c0cfc9c2", null ],

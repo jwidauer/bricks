@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['read_5fguard_0',['read_guard',['../classbricks_1_1rw__lock.html#ad3beb1a63b5ca89fa66ecb7b851737e0',1,'bricks::rw_lock']]]
+  ['ok_0',['ok',['../namespacebricks.html#a19b2ba7d93c79fd196404d3fc50eac4f',1,'bricks']]]
 ];

@@ -128,6 +128,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbricks_1_1bad__result__access.html">bad_result_access</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the type of the error thrown when accessing a bad result.  <a href="classbricks_1_1bad__result__access.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbricks_1_1deleter.html">deleter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A deleter is a function that deletes a pointer.  <a href="structbricks_1_1deleter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbricks_1_1has__find.html">has_find</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a type has a <code>find</code> method taking a specific type.  <a href="structbricks_1_1has__find.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,6 +152,10 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:a85f013a059376a35d5efe5b7d37d1720"><td class="memTemplParams" colspan="2">template&lt;typename T , auto fn&gt; </td></tr>
+<tr class="memitem:a85f013a059376a35d5efe5b7d37d1720"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a85f013a059376a35d5efe5b7d37d1720">handle</a> = std::unique_ptr&lt; T, <a class="el" href="structbricks_1_1deleter.html">deleter</a>&lt; T, fn &gt; &gt;</td></tr>
+<tr class="memdesc:a85f013a059376a35d5efe5b7d37d1720"><td class="mdescLeft">&#160;</td><td class="mdescRight">A handle is a unique_ptr with a custom deleter.  <a href="namespacebricks.html#a85f013a059376a35d5efe5b7d37d1720">More...</a><br /></td></tr>
+<tr class="separator:a85f013a059376a35d5efe5b7d37d1720"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19b2ba7d93c79fd196404d3fc50eac4f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a19b2ba7d93c79fd196404d3fc50eac4f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebricks.html#a19b2ba7d93c79fd196404d3fc50eac4f">ok</a> = detail::value_container&lt; T, detail::ok_tag &gt;</td></tr>
 <tr class="separator:a19b2ba7d93c79fd196404d3fc50eac4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -244,6 +251,35 @@ template&lt;typename E &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a85f013a059376a35d5efe5b7d37d1720" name="a85f013a059376a35d5efe5b7d37d1720"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85f013a059376a35d5efe5b7d37d1720">&#9670;&#160;</a></span>handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , auto fn&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacebricks.html#a85f013a059376a35d5efe5b7d37d1720">bricks::handle</a> = typedef std::unique_ptr&lt;T, <a class="el" href="structbricks_1_1deleter.html">deleter</a>&lt;T, fn&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A handle is a unique_ptr with a custom deleter. </p>
+<p >Example: </p><div class="fragment"><div class="line">    <span class="keyword">using </span>file = <a class="code hl_typedef" href="namespacebricks.html#a85f013a059376a35d5efe5b7d37d1720">bricks::handle&lt;FILE, fclose&gt;</a>;</div>
+<div class="line">    <span class="keyword">auto</span> f = file{fopen(<span class="stringliteral">&quot;test.txt&quot;</span>, <span class="stringliteral">&quot;w&quot;</span>)};</div>
+<div class="line">    <span class="comment">// f is automatically closed when it goes out of scope</span></div>
+<div class="ttc" id="anamespacebricks_html_a85f013a059376a35d5efe5b7d37d1720"><div class="ttname"><a href="namespacebricks.html#a85f013a059376a35d5efe5b7d37d1720">bricks::handle</a></div><div class="ttdeci">std::unique_ptr&lt; T, deleter&lt; T, fn &gt; &gt; handle</div><div class="ttdoc">A handle is a unique_ptr with a custom deleter.</div><div class="ttdef"><b>Definition:</b> handle.hpp:26</div></div>
+</div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of the handle. </td></tr>
+    <tr><td class="paramname">fn</td><td>The deleter function. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

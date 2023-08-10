@@ -8,7 +8,7 @@
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
     <meta name="generator" content="Doxygen 1.9.5" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BRICKS: Namespace Members</title>
+    <title>BRICKS: /github/workspace/include/bricks/handle.hpp Source File</title>
     <link href="tabs.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="dynsections.js"></script>
@@ -88,7 +88,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('namespacemembers.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('handle_8hpp_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -113,34 +113,35 @@ $(document).ready(function(){initNavTree('namespacemembers.html',''); initResiza
 </div>
 </div>
 
+<div class="header">
+  <div class="headertitle"><div class="title">handle.hpp</div></div>
+</div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all namespace members with links to the namespace documentation for each member:</div><ul>
-<li>always_false_v&#160;:&#160;<a class="el" href="namespacebricks.html#af33da0798fa7e1c13559de8d320713de">bricks</a></li>
-<li>bind_front()&#160;:&#160;<a class="el" href="namespacebricks.html#a6ad8c274821ef9eaf034b382a7dfadaf">bricks</a></li>
-<li>contains()&#160;:&#160;<a class="el" href="namespacebricks.html#a2b10cd3eefc9387e44407e45c0cfc9c2">bricks</a></li>
-<li>contains_if()&#160;:&#160;<a class="el" href="namespacebricks.html#af648dddfb613afc30701c8df34f0bb19">bricks</a></li>
-<li>enumerate()&#160;:&#160;<a class="el" href="namespacebricks.html#ab3ae00555224508fa002c2d40d0c83b0">bricks</a></li>
-<li>err&#160;:&#160;<a class="el" href="namespacebricks.html#a56141134ef4783cc27e2f3e970dbedf5">bricks</a></li>
-<li>filter()&#160;:&#160;<a class="el" href="namespacebricks.html#a194c2c26258519b6b094c6911cbbae6e">bricks</a></li>
-<li>from_string()&#160;:&#160;<a class="el" href="namespacebricks.html#a006beff646c0efb0edfea15c733b224b">bricks</a></li>
-<li>handle&#160;:&#160;<a class="el" href="namespacebricks.html#a85f013a059376a35d5efe5b7d37d1720">bricks</a></li>
-<li>index_of()&#160;:&#160;<a class="el" href="namespacebricks.html#a5f82ab9b5978f3b76b4de90de73a951d">bricks</a></li>
-<li>index_of_if()&#160;:&#160;<a class="el" href="namespacebricks.html#a0ad262015be72bc9400dd9332ddc3b03">bricks</a></li>
-<li>is_iterator_v&#160;:&#160;<a class="el" href="namespacebricks.html#a674ac3c278cdcc59916c6121329f13b8">bricks</a></li>
-<li>is_ready_after()&#160;:&#160;<a class="el" href="namespacebricks.html#afec1449ef3e22e63547887744c4111a9">bricks</a></li>
-<li>is_ready_at()&#160;:&#160;<a class="el" href="namespacebricks.html#a81e2fa4c1a3e3459b3cea78f1d796564">bricks</a></li>
-<li>keys()&#160;:&#160;<a class="el" href="namespacebricks.html#a86002e9c15976d8002fb8b18f6f20c84">bricks</a></li>
-<li>ok&#160;:&#160;<a class="el" href="namespacebricks.html#a19b2ba7d93c79fd196404d3fc50eac4f">bricks</a></li>
-<li>reverse()&#160;:&#160;<a class="el" href="namespacebricks.html#a437b5370782493b27a27d8882521d96e">bricks</a></li>
-<li>to_string()&#160;:&#160;<a class="el" href="namespacebricks.html#a160a4be43d95d684366925d6028a406b">bricks</a></li>
-<li>values()&#160;:&#160;<a class="el" href="namespacebricks.html#a73112939fcac4c4eced690eff476e781">bricks</a></li>
-<li>zip()&#160;:&#160;<a class="el" href="namespacebricks.html#a464e63cab89ecd30b76fb2f3ed206f00">bricks</a></li>
-</ul>
-</div><!-- contents -->
+<a href="handle_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacebricks.html">bricks</a> {</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, auto fn&gt;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structbricks_1_1deleter.html">   13</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structbricks_1_1deleter.html">deleter</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structbricks_1_1deleter.html#a2576a774b15e2b58c5dee51cd207c50c">   14</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="structbricks_1_1deleter.html#a2576a774b15e2b58c5dee51cd207c50c">operator()</a>(T* p) { fn(p); }</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>};</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, auto fn&gt;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="namespacebricks.html#a85f013a059376a35d5efe5b7d37d1720">   26</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacebricks.html#a85f013a059376a35d5efe5b7d37d1720">handle</a> = std::unique_ptr&lt;T, deleter&lt;T, fn&gt;&gt;;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}  <span class="comment">// namespace bricks</span></div>
+<div class="ttc" id="anamespacebricks_html"><div class="ttname"><a href="namespacebricks.html">bricks</a></div><div class="ttdef"><b>Definition:</b> algorithm.hpp:12</div></div>
+<div class="ttc" id="anamespacebricks_html_a85f013a059376a35d5efe5b7d37d1720"><div class="ttname"><a href="namespacebricks.html#a85f013a059376a35d5efe5b7d37d1720">bricks::handle</a></div><div class="ttdeci">std::unique_ptr&lt; T, deleter&lt; T, fn &gt; &gt; handle</div><div class="ttdoc">A handle is a unique_ptr with a custom deleter.</div><div class="ttdef"><b>Definition:</b> handle.hpp:26</div></div>
+<div class="ttc" id="astructbricks_1_1deleter_html"><div class="ttname"><a href="structbricks_1_1deleter.html">bricks::deleter</a></div><div class="ttdoc">A deleter is a function that deletes a pointer.</div><div class="ttdef"><b>Definition:</b> handle.hpp:13</div></div>
+<div class="ttc" id="astructbricks_1_1deleter_html_a2576a774b15e2b58c5dee51cd207c50c"><div class="ttname"><a href="structbricks_1_1deleter.html#a2576a774b15e2b58c5dee51cd207c50c">bricks::deleter::operator()</a></div><div class="ttdeci">void operator()(T *p)</div><div class="ttdef"><b>Definition:</b> handle.hpp:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_7907dc6ee7242cfcf04f96d5d2764e7d.html">bricks</a></li><li class="navelem"><a class="el" href="handle_8hpp.html">handle.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

@@ -4,6 +4,7 @@ var hierarchy =
       [ "bricks::mutex< Class, >", "classbricks_1_1mutex.html", null ],
       [ "bricks::rw_lock< Class >", "classbricks_1_1rw__lock.html", null ]
     ] ],
+    [ "bricks::deleter< T, fn >", "structbricks_1_1deleter.html", null ],
     [ "std::exception", null, [
       [ "std::runtime_error", null, [
         [ "bricks::bad_result_access", "classbricks_1_1bad__result__access.html", null ]

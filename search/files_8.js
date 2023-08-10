@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['write_5fguard_2ehpp_0',['write_guard.hpp',['../write__guard_8hpp.html',1,'']]]
+  ['timer_2ehpp_0',['timer.hpp',['../timer_8hpp.html',1,'']]],
+  ['type_5ftraits_2ehpp_1',['type_traits.hpp',['../type__traits_8hpp.html',1,'']]]
 ];

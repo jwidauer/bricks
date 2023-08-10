@@ -2,6 +2,7 @@ var annotated_dup =
 [
     [ "bricks", "namespacebricks.html", [
       [ "bad_result_access", "classbricks_1_1bad__result__access.html", null ],
+      [ "deleter", "structbricks_1_1deleter.html", "structbricks_1_1deleter" ],
       [ "has_find", "structbricks_1_1has__find.html", "structbricks_1_1has__find" ],
       [ "is_iterator", "structbricks_1_1is__iterator.html", null ],
       [ "mutex", "classbricks_1_1mutex.html", "classbricks_1_1mutex" ],
