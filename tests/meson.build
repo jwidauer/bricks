@@ -7,6 +7,7 @@ sources = [
     'contains_test.cpp',
     'enumerate_test.cpp',
     'filter_test.cpp',
+    'handle_test.cpp',
     'index_of_test.cpp',
     'main.cpp',
     'mutex_test.cpp',
