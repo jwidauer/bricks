@@ -30,9 +30,6 @@ class BricksConan(ConanFile):
         if conan_version >= Version("2.0.0"):
             self.version = load(self, "version.txt").rstrip()
 
-    def validate(self):
-        check_min_cppstd(self, 17)
-
     def layout(self):
         if conan_version >= Version("2.0.0"):
             cmake_layout(self)
