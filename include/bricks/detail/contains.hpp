@@ -41,4 +41,14 @@ constexpr auto contains(const std::basic_string<CharT, Traits, Allocator>& str,
   return str.find(value) != std::basic_string<CharT, Traits, Allocator>::npos;
 }
 
+/**
+ * @brief Specialization for string_views.
+ */
+template <class CharT, class Traits = std::char_traits<CharT>>
+constexpr auto contains(const std::basic_string_view<CharT, Traits>& str,
+                        const CharT& value) noexcept -> bool
+{
+  return str.find(value) != std::basic_string_view<CharT, Traits>::npos;
+}
+
 }  // namespace bricks::detail

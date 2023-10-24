@@ -2,7 +2,10 @@
 
 #include <algorithm>
 #include <bricks/rw_lock.hpp>
+#include <chrono>
+#include <string>
 #include <thread>
+#include <utility>
 #include <vector>
 
 #include "test_error.hpp"

@@ -1,12 +1,13 @@
 #include <doctest/doctest.h>
 
 #include <bricks/algorithm.hpp>
+#include <chrono>
+#include <functional>
+#include <future>
 #include <map>
-#include <set>
-#include <stdexcept>
 #include <string>
+#include <system_error>
 #include <thread>
-#include <unordered_set>
 #include <vector>
 
 TEST_SUITE_BEGIN("[algorithm]");
@@ -26,9 +27,9 @@ TEST_CASE("keys")
   SUBCASE("example")
   {
     /// [keys-example]
-    std::map<std::string, int> map = {{"a", 1}, {"b", 2}, {"c", 3}};
+    std::map<std::string, int, std::less<>> map = {{"a", 1}, {"b", 2}, {"c", 3}};
     auto keys = bricks::keys(map);
-    for (auto key : keys) {
+    for (const auto& key : keys) {
       INFO(key);  // prints "a", "b", "c"
     }
     /// [keys-example]
@@ -50,9 +51,9 @@ TEST_CASE("values")
   SUBCASE("example")
   {
     /// [values-example]
-    std::map<std::string, int> map = {{"a", 1}, {"b", 2}, {"c", 3}};
+    std::map<std::string, int, std::less<>> map = {{"a", 1}, {"b", 2}, {"c", 3}};
     auto values = bricks::values(map);
-    for (auto value : values) {
+    for (const auto& value : values) {
       INFO(value);  // prints 1, 2, 3
     }
     /// [values-example]

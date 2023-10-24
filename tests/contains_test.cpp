@@ -78,6 +78,15 @@ TEST_CASE("contains")
     CHECK(bricks::contains(s, 'c'));
     CHECK_FALSE(bricks::contains(s, 'd'));
   }
+
+  SUBCASE("string_view")
+  {
+    std::string_view s = "abc";
+    CHECK(bricks::contains(s, 'a'));
+    CHECK(bricks::contains(s, 'b'));
+    CHECK(bricks::contains(s, 'c'));
+    CHECK_FALSE(bricks::contains(s, 'd'));
+  }
 }
 
 TEST_CASE("contains_if")

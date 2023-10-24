@@ -50,4 +50,16 @@ constexpr auto index_of(const std::basic_string<CharT, Traits, Allocator>& str,
                                                                   : std::nullopt;
 }
 
+/**
+ * @brief Specialization for string_views.
+ */
+template <class CharT, class Traits = std::char_traits<CharT>>
+constexpr auto index_of(const std::basic_string_view<CharT, Traits>& str,
+                        const CharT& value) noexcept -> std::optional<std::size_t>
+{
+  const auto pos = str.find(value);
+  return pos != std::basic_string_view<CharT, Traits>::npos ? std::make_optional(pos)
+                                                            : std::nullopt;
+}
+
 }  // namespace bricks::detail

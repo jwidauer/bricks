@@ -1,6 +1,10 @@
 #include <doctest/doctest.h>
 
 #include <bricks/timer.hpp>
+#include <chrono>
+#include <future>
+#include <ratio>
+#include <system_error>
 
 #include "string_makers.hpp"
 

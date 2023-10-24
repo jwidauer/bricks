@@ -1,7 +1,9 @@
 #include <doctest/doctest.h>
 
+#include <bricks/detail/zip.hpp>
 #include <bricks/ranges.hpp>
 #include <numeric>
+#include <tuple>
 #include <vector>
 
 TEST_SUITE_BEGIN("[zip]");

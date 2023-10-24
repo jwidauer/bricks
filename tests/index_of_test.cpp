@@ -67,6 +67,15 @@ TEST_CASE("index_of")
     CHECK(bricks::index_of(s, 'c') == 2);
     CHECK(bricks::index_of(s, 'd') == std::nullopt);
   }
+
+  SUBCASE("string_view")
+  {
+    std::string_view s = "abc";
+    CHECK(bricks::index_of(s, 'a') == 0);
+    CHECK(bricks::index_of(s, 'b') == 1);
+    CHECK(bricks::index_of(s, 'c') == 2);
+    CHECK(bricks::index_of(s, 'd') == std::nullopt);
+  }
 }
 
 TEST_CASE("index_of_if")
