@@ -16,9 +16,6 @@ Checks: >
   -readability-identifier-length,
   -readability-magic-numbers,
   -readability-function-cognitive-complexity,
-  -readability-convert-member-functions-to-static,
-  -bugprone-narrowing-conversions,
-  -bugprone-implicit-widening-of-multiplication-result
 WarningsAsErrors: '*'
 HeaderFilterRegex: ''
 FormatStyle:     Google
