@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "bricks/detail/contains.hpp"
+#include "bricks/detail/find.hpp"
 #include "bricks/detail/index_of.hpp"
 
 namespace bricks {
@@ -158,6 +159,28 @@ constexpr auto index_of_if(const Container& container, const UnaryPredicate& pre
   const auto it = std::find_if(std::begin(container), std::end(container), predicate);
   return it != std::end(container) ? std::make_optional(std::distance(std::begin(container), it))
                                    : std::nullopt;
+}
+
+/** @brief Find the first element that compares equal to a value.
+ *
+ * If the container has a `find` method, it will be used to find the value. Otherwise, the container
+ * will be searched using `std::find`. If `std::find` is used, the container must have a `begin` and
+ * `end` method. If the container has a `find` method, the container must have a `key_type` type
+ * alias.
+ *
+ * Example:
+ * @snippet algorithm_test.cpp find-example
+ *
+ * @tparam Container The type of the container.
+ * @tparam Value The type of the value.
+ * @param container The container.
+ * @param value The value to find.
+ * @return std::optional<typename Container::value_type> The value, if it exists.
+ */
+template <class Container, class Value>
+constexpr auto find(const Container& container, const Value& value) -> decltype(auto)
+{
+  return detail::find(container, value);
 }
 
 /**

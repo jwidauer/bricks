@@ -9,6 +9,7 @@ headers = [
     'bricks/detail/contains.hpp',
     'bricks/detail/enumerate.hpp',
     'bricks/detail/filter.hpp',
+    'bricks/detail/find.hpp',
     'bricks/detail/index_of.hpp',
     'bricks/detail/read_guard.hpp',
     'bricks/detail/reverse.hpp',
