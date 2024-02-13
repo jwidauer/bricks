@@ -19,7 +19,7 @@ jobs:
       - name: Generate compilation database
         run: CONFIGURE_ONLY=1 conan build -s build_type=Debug .
 
-      - uses: pre-commit/action@v3.0.0
+      - uses: pre-commit/action@v3.0.1
 
   build:
     runs-on: ubuntu-22.04
