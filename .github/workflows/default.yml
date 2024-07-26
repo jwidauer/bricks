@@ -40,13 +40,15 @@ jobs:
       BUILD_WRAPPER_OUT_DIR: bw-output # Directory where build-wrapper output will be placed
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Install conan, meson, ninja and gcovr
         uses: ./.github/actions/setup
 
       - id: setup-sonar-scanner
         name: Setup sonar cloud
-        uses: jwidauer/setup-sonar-scanner@v3
+        uses: SonarSource/sonarcloud-github-c-cpp@v2.0.2
 
       - name: Build with build-wrapper
         env:
@@ -65,7 +67,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           sonar-scanner \
-            --define sonar.host.url="${{ steps.setup-sonar-scanner.outputs.sonar-server-url }}" \
             --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}" \
             --define sonar.coverageReportPaths=build/Debug/meson-logs/sonarqube.xml
 
