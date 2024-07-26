@@ -1,6 +1,10 @@
 <map id="/github/workspace/include/bricks/mutex.hpp" name="/github/workspace/include/bricks/mutex.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="14,5,187,45"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,93,63,119"/>
-<area shape="rect" id="node3" title=" " alt="" coords="115,167,198,192"/>
-<area shape="rect" id="node4" href="$write__guard_8hpp.html" title=" " alt="" coords="139,93,287,119"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="13,5,185,46"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,94,62,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,48,55,83,51,80,81,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="113,168,194,193"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="106,46,127,119,142,153,137,155,122,121,100,47"/>
+<area shape="rect" id="Node000004" href="$write__guard_8hpp.html" title=" " alt="" coords="136,94,283,120"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="128,44,182,82,179,87,125,49"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="202,122,174,157,170,154,198,118"/>
 </map>

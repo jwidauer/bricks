@@ -1,8 +1,14 @@
 <map id="/github/workspace/include/bricks/type_traits.hpp" name="/github/workspace/include/bricks/type_traits.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="203,5,376,45"/>
-<area shape="rect" id="node2" href="$contains_8hpp.html" title=" " alt="" coords="5,93,179,133"/>
-<area shape="rect" id="node4" href="$index__of_8hpp.html" title=" " alt="" coords="203,93,376,133"/>
-<area shape="rect" id="node5" href="$result_8hpp.html" title=" " alt="" coords="400,93,573,133"/>
-<area shape="rect" id="node3" href="$algorithm_8hpp.html" title=" " alt="" coords="104,181,277,221"/>
-<area shape="rect" id="node6" href="$charconv_8hpp.html" title=" " alt="" coords="400,181,573,221"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="201,5,374,46"/>
+<area shape="rect" id="Node000002" href="$contains_8hpp.html" title=" " alt="" coords="5,94,178,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,55,137,96,135,91,228,50"/>
+<area shape="rect" id="Node000004" href="$index__of_8hpp.html" title=" " alt="" coords="201,94,374,135"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="290,62,290,94,285,94,285,62"/>
+<area shape="rect" id="Node000005" href="$result_8hpp.html" title=" " alt="" coords="397,94,570,135"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="347,50,440,91,438,96,345,55"/>
+<area shape="rect" id="Node000003" href="$algorithm_8hpp.html" title=" " alt="" coords="103,183,275,223"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="126,143,169,180,165,184,123,147"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="256,147,213,184,209,180,252,143"/>
+<area shape="rect" id="Node000006" href="$charconv_8hpp.html" title=" " alt="" coords="397,183,570,223"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="486,150,486,182,481,182,481,150"/>
 </map>
