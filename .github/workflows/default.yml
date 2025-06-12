@@ -48,7 +48,7 @@ jobs:
 
       - id: setup-sonar-scanner
         name: Setup sonar cloud
-        uses: SonarSource/sonarcloud-github-c-cpp@v3.1.0
+        uses: SonarSource/sonarcloud-github-c-cpp@v3.2.0
 
       - name: Build with build-wrapper
         env:
