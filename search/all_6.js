@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['handle_0',['handle',['../namespacebricks.html#a85f013a059376a35d5efe5b7d37d1720',1,'bricks']]],
+  ['handle_0',['handle',['../namespacebricks.html#a1632d727ef97425c39f3f74abb724004',1,'bricks']]],
   ['handle_2ehpp_1',['handle.hpp',['../handle_8hpp.html',1,'']]],
   ['has_5ffind_2',['has_find',['../structbricks_1_1has__find.html',1,'bricks']]],
   ['has_5ffind_5fv_3',['has_find_v',['../structbricks_1_1has__find.html#abcddbc6e780715919b596d9f1341ff13',1,'bricks::has_find']]],

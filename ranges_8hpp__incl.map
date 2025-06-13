@@ -1,8 +1,8 @@
 <map id="/github/workspace/include/bricks/ranges.hpp" name="/github/workspace/include/bricks/ranges.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="205,5,377,46"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="204,5,377,46"/>
 <area shape="rect" id="Node000002" href="$enumerate_8hpp.html" title=" " alt="" coords="5,94,147,120"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,49,124,91,122,86,236,44"/>
-<area shape="rect" id="Node000004" href="$filter_8hpp.html" title=" " alt="" coords="171,94,275,120"/>
+<area shape="rect" id="Node000004" href="$filter_8hpp.html" title=" " alt="" coords="170,94,275,120"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="276,48,245,84,241,80,272,45"/>
 <area shape="rect" id="Node000005" href="$reverse_8hpp.html" title=" " alt="" coords="298,94,422,120"/>
 <area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="310,45,341,80,337,84,306,48"/>
@@ -13,7 +13,7 @@
 <area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="233,118,258,153,254,156,229,121"/>
 <area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="347,122,301,160,298,156,344,118"/>
 <area shape="poly" id="edge9_Node000006_Node000003" title=" " alt="" coords="457,123,320,167,318,162,455,118"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="335,168,399,193"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="334,168,399,193"/>
 <area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="473,123,403,162,400,157,471,118"/>
 <area shape="rect" id="Node000008" title=" " alt="" coords="423,168,473,193"/>
 <area shape="poly" id="edge10_Node000006_Node000008" title=" " alt="" coords="488,121,466,156,461,153,484,118"/>
