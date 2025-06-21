@@ -9,7 +9,7 @@ TEST_SUITE_BEGIN("[mutex]");
 TEST_CASE("example")
 {
   /// [mutex-example]
-  bricks::mutex<std::vector<int>> vec{3, 2, 1};
+  bricks::mutex<std::vector<int>> vec{std::in_place, {3, 2, 1}};
 
   vec.lock()->push_back(4);  // Guaranteed to be thread safe write.
 
@@ -24,7 +24,7 @@ TEST_CASE("example")
 
 TEST_CASE("underlying constructor works")
 {
-  bricks::mutex<std::vector<int>> c(3, 1);
+  bricks::mutex<std::vector<int>> c(std::in_place, 3, 1);
   auto r = c.lock();
   CHECK(r->size() == 3);
   CHECK(r->at(0) == 1);

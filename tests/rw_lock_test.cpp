@@ -12,7 +12,7 @@ TEST_SUITE_BEGIN("[rw_lock]");
 TEST_CASE("example")
 {
   /// [rw_lock-example]
-  bricks::rw_lock<std::vector<int>> vec{3, 2, 1};
+  bricks::rw_lock<std::vector<int>> vec{std::in_place, {3, 2, 1}};
 
   vec.write()->push_back(4);  // Guaranteed to be thread safe write.
 
@@ -41,7 +41,7 @@ TEST_CASE("example")
 
 TEST_CASE("Underlying constructor works")
 {
-  bricks::rw_lock<std::vector<int>> c(3, 1);
+  bricks::rw_lock<std::vector<int>> c(std::in_place, 3, 1);
   auto r = c.read();
   CHECK(r->size() == 3);
   CHECK(r->at(0) == 1);
