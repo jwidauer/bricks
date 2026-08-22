@@ -3,11 +3,11 @@ on: push
 
 jobs:
   lint:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v5
 
-      - name: Install conan, meson, ninja and gcovr
+      - name: Install meson, ninja and gcovr
         uses: ./.github/actions/setup
 
       - name: Setup python
@@ -17,24 +17,26 @@ jobs:
         run: sudo apt install cppcheck
 
       - name: Generate compilation database
-        run: CONFIGURE_ONLY=1 conan build -s build_type=Debug .
+        run: meson setup build
 
       - uses: pre-commit/action@v3.0.1
 
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-26.04
     needs: lint
     steps:
       - uses: actions/checkout@v5
 
-      - name: Install conan, meson, ninja and gcovr
+      - name: Install meson, ninja and gcovr
         uses: ./.github/actions/setup
 
       - name: Build
-        run: conan build .
+        run: |
+          meson setup build
+          meson compile -C build
 
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-26.04
     needs: build
     env:
       BUILD_WRAPPER_OUT_DIR: bw-output # Directory where build-wrapper output will be placed
@@ -43,7 +45,7 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
-      - name: Install conan, meson, ninja and gcovr
+      - name: Install meson, ninja and gcovr
         uses: ./.github/actions/setup
 
       - id: setup-sonar-scanner
@@ -53,13 +55,14 @@ jobs:
       - name: Build with build-wrapper
         env:
           BUILD_WRAPPER_CMD: build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }}
-        run: ${{ env.BUILD_WRAPPER_CMD }} conan build -o bricks/*:build_coverage=True -s build_type=Debug .
+        run: |
+          meson setup build --buildtype=debug -D b_coverage=true
+          ${{ env.BUILD_WRAPPER_CMD }} meson compile -C build
 
       - name: Run tests and generate coverage
         run: |
-          cd build/Debug
-          ninja test
-          ninja coverage
+          meson test -C build --print-errorlogs
+          ninja -C build coverage
 
       - name: Run sonar-scanner
         env:
@@ -68,16 +71,16 @@ jobs:
         run: |
           sonar-scanner \
             --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}" \
-            --define sonar.coverageReportPaths=build/Debug/meson-logs/sonarqube.xml
+            --define sonar.coverageReportPaths=build/meson-logs/sonarqube.xml
 
       - name: Upload coverage as artifact
         uses: actions/upload-artifact@v5
         with:
           name: coverage
-          path: build/Debug/meson-logs/
+          path: build/meson-logs/
 
   docs:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-26.04
     needs: test
     steps:
       - uses: actions/checkout@v5
@@ -101,7 +104,7 @@ jobs:
           folder: docs/html
 
   release-please:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-26.04
     needs: docs
     if: github.ref == 'refs/heads/main'
     steps:

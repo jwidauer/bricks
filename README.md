@@ -6,19 +6,18 @@ Documentation can be found [here](https://jwidauer.github.io/bricks).
 
 ## Installation
 
-We use [Conan](https://conan.io/), [Meson](https://mesonbuild.com/), [Ninja](https://ninja-build.org/), [pre-commit](https://pre-commit.com/), and [commitlint](https://commitlint.js.org/#/) for tooling.
+We use [Meson](https://mesonbuild.com/), [Ninja](https://ninja-build.org/), and [pre-commit](https://pre-commit.com/) for tooling.
 To install them, run:
 
 ```bash
-pip install conan meson ninja pre-commit
-npm install --save-dev @commitlint/{config-conventional,cli}
-conan profile detect
+pip install meson ninja pre-commit
 ```
 
 ## Building
 
-Then, to install the dependencies and compile the project, run:
+To build the project, run:
 
 ```bash
-conan build .
+meson setup build
+meson compile -C build
 ```

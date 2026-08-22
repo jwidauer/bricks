@@ -1,4 +1,3 @@
-
 inc_dir = include_directories('.')
 
 # Make this library usable from the system's

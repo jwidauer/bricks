@@ -9,14 +9,10 @@ Checks: >
   portability-*,
   readability-*,
   -google-readability-braces-around-statements,
-  -google-readability-namespace-comments,
-  -google-runtime-references,
-  -misc-non-private-member-variables-in-classes,
   -readability-braces-around-statements,
   -readability-identifier-length,
   -readability-magic-numbers,
   -readability-function-cognitive-complexity,
-  -readability-convert-member-functions-to-static,
   -bugprone-narrowing-conversions,
   -bugprone-implicit-widening-of-multiplication-result
 WarningsAsErrors: '*'
@@ -69,3 +65,5 @@ CheckOptions:
     value:           lower_case
   - key:             readability-identifier-naming.IgnoreMainLikeFunctions
     value:           1
+  - key:             modernize-use-trailing-return-type.TransformLambdas
+    value:           all_except_auto
