@@ -2,8 +2,11 @@
 
 #include <doctest/doctest.h>
 
+#include <bricks/detail/zip.hpp>
 #include <future>
 #include <optional>
+#include <tuple>
+#include <utility>
 
 namespace doctest {
 
@@ -33,6 +36,33 @@ struct StringMaker<std::future_status> {
         return {"std::future_status::deferred"};
     }
     return {"unknown"};
+  }
+};
+
+template <typename... Args>
+struct StringMaker<std::tuple<Args...>> {
+  static auto convert(const std::tuple<Args...>& value) -> String
+  {
+    String result = "std::tuple{";
+    std::apply(
+        [&result](const auto&... args) -> void {
+          ((result += doctest::toString(args) + ", "), ...);
+        },
+        value);
+    if (sizeof...(Args) > 0) {
+      const auto sz = result.size() - 2;
+      result = std::move(result).substr(0, sz);  // Remove the last ", "
+    }
+    result += "}";
+    return result;
+  }
+};
+
+template <typename... Args>
+struct StringMaker<bricks::detail::zip_iterator<Args...>> {
+  static auto convert(const bricks::detail::zip_iterator<Args...> value) -> String
+  {
+    return doctest::toString(*value);
   }
 };
 

@@ -4,6 +4,7 @@
 #include <iterator>
 #include <tuple>
 #include <type_traits>
+#include <utility>
 #include <vector>
 
 namespace bricks::detail {
@@ -13,7 +14,7 @@ namespace bricks::detail {
     using each expanded value to compare tuple value at that index. If any of
     the tuple elements are equal, the function will return true. */
 template <typename... Args, std::size_t... Index>
-auto any_match_impl(std::tuple<Args...> const& lhs, std::tuple<Args...> const& rhs,
+auto any_match_impl(const std::tuple<Args...>& lhs, const std::tuple<Args...>& rhs,
                     std::index_sequence<Index...> /* unused */) -> bool
 {
   return (... || (std::get<Index>(lhs) == std::get<Index>(rhs)));
@@ -23,7 +24,7 @@ auto any_match_impl(std::tuple<Args...> const& lhs, std::tuple<Args...> const& r
  * @brief Function for checking if any of the elements in a tuple match.
  */
 template <typename... Args>
-auto any_match(std::tuple<Args...> const& lhs, std::tuple<Args...> const& rhs) -> bool
+auto any_match(const std::tuple<Args...>& lhs, const std::tuple<Args...>& rhs) -> bool
 {
   return any_match_impl(lhs, rhs, std::index_sequence_for<Args...>{});
 }
@@ -66,8 +67,12 @@ class zip_iterator {
     return tmp;
   }
 
-  auto operator==(zip_iterator const& other) { return any_match(ierators_, other.ierators_); }
-  auto operator!=(zip_iterator const& other) { return !(*this == other); }
+  template <typename... Iter>
+  friend auto operator==(const zip_iterator<Iter...>& lhs, const zip_iterator<Iter...>& rhs)
+      -> bool;
+  template <typename... Iter>
+  friend auto operator!=(const zip_iterator<Iter...>& lhs, const zip_iterator<Iter...>& rhs)
+      -> bool;
 
   auto operator*() const -> value_type
   {
@@ -77,6 +82,17 @@ class zip_iterator {
  private:
   std::tuple<Iters...> ierators_;
 };
+
+template <typename... Iter>
+auto operator==(const zip_iterator<Iter...>& lhs, const zip_iterator<Iter...>& rhs) -> bool
+{
+  return any_match(lhs.ierators_, rhs.ierators_);
+}
+template <typename... Iter>
+auto operator!=(const zip_iterator<Iter...>& lhs, const zip_iterator<Iter...>& rhs) -> bool
+{
+  return !(lhs == rhs);
+}
 
 /* std::decay needed because T is a reference, and is not a complete type */
 template <typename T>
